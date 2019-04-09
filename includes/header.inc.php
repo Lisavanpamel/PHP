@@ -20,9 +20,9 @@
                 <!--<a class="logo" href="index.php"><img src="images/logo.svg" alt="logo"></a>-->
 
                 <div class="right_actions">
-                    <a href="upload.php">Add</a>
+                    <a href="">Add</a>
                     <a href="edit_profile.php">Edit profile</a>
-                    <a href="logout.php">Log out</a>
+                    <a href="">Log out</a>
                 </div>
             </div>
         </nav>
