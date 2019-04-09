@@ -1,0 +1,30 @@
+body {
+    margin: 0px;
+    background-color: azure;
+}
+
+/* navigatie */
+nav {
+    background-color: rgb(16, 64, 131);
+    color: white;
+    padding: 20px;
+}
+
+nav > div.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right_actions {
+    display: flex;
+    align-items: center;
+}
+
+.right_actions a:link,
+.right_actions a:visited,
+.right_actions a:hover,
+.right_actions a:active {
+    color:white;
+    text-decoration: none;
+    margin-left: 50px;
+}
