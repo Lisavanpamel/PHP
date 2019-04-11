@@ -7,7 +7,6 @@ require_once("functions.php");
       // veldjes uitlezen
       $username = $_POST ['username'];
       $email = $_POST ['email'];
-      $birthdate = $_POST ['birthdate'];
       $password = $_POST ['password'];
   
       if( canRegister($username, $email, $password) ){
