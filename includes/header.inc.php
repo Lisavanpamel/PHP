@@ -20,7 +20,7 @@
                 <!--<a class="logo" href="index.php"><img src="images/logo.svg" alt="logo"></a>-->
 
                 <div class="right_actions">
-                    <a href="">Add</a>
+                    <a href="upload.php">Upload</a>
                     <a href="edit_profile.php">Edit profile</a>
                     <a href="logout.php">Log out</a>
                 </div>
