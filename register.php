@@ -41,6 +41,7 @@
   <!-- country -->
     <div class="input">
       <label>Country</label>
+      <input type="country"value="Belgium">
     </div>
 
     <!-- password -->
