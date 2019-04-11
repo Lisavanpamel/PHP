@@ -1,7 +1,5 @@
 <?php
 include("config.php");
-require_once("classes/User.class.php");
-require_once("classes/Db.class.php");
 session_start();
 
  if($_SERVER["REQUEST_METHOD"] == "POST") {
