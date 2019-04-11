@@ -15,7 +15,3 @@ include_once("includes/header.inc.php");
     
 </body>
 </html>
-
-
-hallo
-Jens
