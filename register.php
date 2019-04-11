@@ -1,9 +1,32 @@
 <?php
+require_once("functions.php");
 
-
-
-
-?>
+ 
+    // indien singup
+    if( !empty($_POST) ){
+      // veldjes uitlezen
+      $username = $_POST ['username'];
+      $email = $_POST ['email'];
+      $birthdate = $_POST ['birthdate'];
+      $password = $_POST ['password'];
+  
+      if( canRegister($username, $email, $password) ){
+          $conn = @new mysqli("localhost", "root", "root", "php2019");
+          $password = md5($password);
+          $sql = "insert into users (user_name, email, password) values ('$username, $email', '$password')";
+          $result = $conn->query($sql);
+          if($result){
+              echo "gelukt";
+          } else {
+              echo "nope";
+          }
+      }
+      else {
+          // error
+      }
+      // db connectie
+      }
+  ?><html lang="en">
 
 <!DOCTYPE html>
 <html lang="en">
