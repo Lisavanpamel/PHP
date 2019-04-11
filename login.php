@@ -1,38 +1,32 @@
 <?php
+require_once("classes/User.class.php");
+require_once("classes/Db.class.php");
+session_start();
 
-function canLogin($email, $password){
-    //this function checks is a user can login
-    if($email!="test@test.com" || $password!="test"){
-        return false;
-    }else{
-        return true;
-    }
-}
-
-	if ( !empty($_POST) ) {
-		// email en password opvragen
-		$email = $_POST['email'];
-		$password = $_POST['password']; 
-		// hash opvragen op basis van email
-		$conn = new PDO("mysql:host=localhost;dbname=php2019;", "root", "root", null);
-		// check of rehash van password gelijk is aan hash uit databank 
-		$statement = $conn->prepare("SELECT * FROM users WHERE email= :email");
-		$statement->bindParam(":email", $email);
-		$result = $statement->execute();
-
-		$user = $statement->fetch(PDO::FETCH_ASSOC);
-		// ja -> login
-		if(password_verify($password, $user['password']) ){
-			echo "het werkt";
-			session_start(); 
-			$_SESSION['userid']= $user['id'];
-			header('Location: index.php');
-		} else {
-			echo "het werkt niet";
-		}
-		// nee -> error
+ if($_SERVER["REQUEST_METHOD"] == "POST") {
+	// username and password sent from form 
+	
+	$myusername = mysqli_real_escape_string($db,$_POST['username']);
+	$mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+	
+	$sql = "SELECT id FROM admin WHERE username = '$user_name' and passcode = '$password'";
+	$result = mysqli_query($db,$sql);
+	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+	$active = $row['active'];
+	
+	$count = mysqli_num_rows($result);
+	
+	// If result matched $username and $password, table row must be 1 row
+	  
+	if($count == 1) {
+	   session_register("user_name");
+	   $_SESSION['user_name'] = $username;
+	   
+	   header("location: index.php");
+	}else {
+	   $error = "Your Login Name or Password is invalid";
 	}
-
+ }
 
 ?><!DOCTYPE html>
 <html lang="en">
