@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    background-color: azure;
+    background-color:white;
 }
 
 /* navigatie */
@@ -30,11 +30,16 @@ nav > div.container {
 }
 /* einde navigatie */
 
+/* form */
 .formitem {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: aqua;
+}
+
+.edit_profile {
+    text-align: center;
 }
 
 .edit_profile label {
@@ -53,3 +58,4 @@ nav > div.container {
     height: 100px;
     border-radius: 50%;
 }
+/* einde form */
