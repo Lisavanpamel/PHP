@@ -22,7 +22,7 @@
                 <div class="right_actions">
                     <a href="">Add</a>
                     <a href="edit_profile.php">Edit profile</a>
-                    <a href="">Log out</a>
+                    <a href="logout.php">Log out</a>
                 </div>
             </div>
         </nav>
