@@ -7,6 +7,7 @@ class User {
   private $username;
   private $email;
   private $password;
+  private $password_confirm;
   private $birthdate;
 
   // krijg de waarde van username
@@ -68,23 +69,50 @@ public function setPassword($password){
   $this->password = $password;
   return $this;
 }
+// voor register2
+public function getPassword_confirm(){
+  return $this->password_confirm;
+}
+
+public function setPassword_confirm($password_confirm){
+  $this->password = $password_confirm;
+  return $this;
+}
+
+
 
 public function register(){
   // form validation
+  // voor register 2
+  if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+    return false;
+    $email_error = "Invalid e-mail";
+  }
+  if(strlen($this->password) < 8){
+    return false;
+    $strong_password_error = "Your password need at least 8 characters";
+  }
+  if($password != $password_confirm){
+    return false;
+    $unequal_password_error = "Passwords don't match";
+  }
+  else{
+  // voor register 2
   $options = [
     "cost" => 12 // 2^12
     ];
   $password = password_hash($this->password,PASSWORD_DEFAULT,$options);
   try{
     $conn = Db::getInstance();
-    $statement = $conn->prepare("insert into users(first_name, last_name, user_name, email, birthdate, password) values(':firstname',':lastname',':username', ':email', ':birthdate', ':password')");
-    $statement->bindParam(":firstname", $this->firstname);
-    $statement->bindParam(":lastname", $this->lastname);
-    $statement->bindParam(":username", $this->username);
-    $statement->bindParam(":email", $this->email);
-    $statement->bindParam(":birthdate", $this->birthdate);
-    $statement->bindParam(":password", $password);
-
+    $statement = $conn->prepare("insert into users(first_name, last_name, user_name, email, birthdate, password) values('$this->firstname','$this->lastname','$this->username', '$this->email', '$this->birthdate', '$password')");
+    /*
+    $statement->bindParam(':firstname', $this->firstname);
+    $statement->bindParam(':lastname', $this->lastname);
+    $statement->bindParam(':username', $this->username);
+    $statement->bindParam(':email', $this->email);
+    $statement->bindParam(':birthdate', $this->birthdate);
+    $statement->bindParam(':password', $password);
+    */
     $result = $statement->execute();
     //return $result;
     header("Location: index.php");
@@ -93,6 +121,8 @@ public function register(){
     echo "mislukt";
   return false;
   }
+
+}
 
 
 }
