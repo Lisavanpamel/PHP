@@ -7,17 +7,17 @@ session_start();
  if($_SERVER["REQUEST_METHOD"] == "POST") {
 	// username and password sent from form 
 	
-	$username = mysqli_real_escape_string($db,$_POST['user_name']);
+	$email = mysqli_real_escape_string($db,$_POST['email']);
 	$password = mysqli_real_escape_string($db,$_POST['password']); 
 	
-	$sql = "SELECT id FROM `users` WHERE 'user_name' = '$username' and password = '$password'";
+	$sql = "SELECT id FROM `users` WHERE 'email' = '$email' and password = '$password'";
 	$result = mysqli_query($db,$sql);
 	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 	$active = $row['active'];
 	
 	$count = mysqli_num_rows($result);
 	
-	// If result matched $username and $password, table row must be 1 row
+	// If result matched $email and $password, table row must be 1 row
 	  
 	if($count == 1) {
 	   session_register("user_name");
