@@ -25,7 +25,7 @@ session_start();
 	   
 	   header("location: index.php");
 	}else {
-	   $error = "Your Login Name or Password is invalid";
+	   echo "Your email or password is invalid. Can you please try again?";
 	}
  }
 
