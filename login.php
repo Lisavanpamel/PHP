@@ -1,6 +1,7 @@
-<?php
+<?php 
+
 include("config.php");
-session_start();
+session_start(); 
 
  if($_SERVER["REQUEST_METHOD"] == "POST") {
 	// username and password sent from form 
@@ -58,7 +59,7 @@ session_start();
 				</div>
 
 				<div class="form__field">
-					<input type="submit" value="Sign in" class="btn btn--primary">	
+					<input type="submit" value="Sign in" id="btn btn--primary">	
 					<input type="checkbox" id="rememberMe"><label for="rememberMe" class="label__inline">Remember me</label>
 				</div>
 
