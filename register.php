@@ -41,7 +41,7 @@ if(!empty($_POST)){
   $user->getBirthdate();
   $user->setPassword($password);
   $user->getPassword();
-  $user->setPassword_comfirm($password_confirm);
+  $user->setPassword_confirm($password_confirm);
   $user->getPassword_confirm();
   $result = $user->register();
 }
@@ -182,4 +182,5 @@ form
 
 
 </html>
+
 
