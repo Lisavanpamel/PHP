@@ -104,7 +104,8 @@ public function register(){
   $password = password_hash($this->password,PASSWORD_DEFAULT,$options);
   try{
     $conn = Db::getInstance();
-    $statement = $conn->prepare("insert into users(first_name, last_name, user_name, email, birthdate, password) values('$this->firstname','$this->lastname','$this->username', '$this->email', '$this->birthdate', '$password')");
+    //$statement = $conn->prepare("insert into users(first_name, last_name, user_name, email, birthdate, password) values('$this->firstname','$this->lastname','$this->username', '$this->email', '$this->birthdate', '$password')");
+    $statement = $conn->prepare("insert into users(first_name, last_name, user_name, email, birthdate, password) values(:firstname, :lastname, :username, :email, :birthdate, :password)");
     /*
     $statement->bindParam(':firstname', $this->firstname);
     $statement->bindParam(':lastname', $this->lastname);
@@ -113,6 +114,14 @@ public function register(){
     $statement->bindParam(':birthdate', $this->birthdate);
     $statement->bindParam(':password', $password);
     */
+    $statement->bindValue(':firstname', $this->getFirstname());
+    $statement->bindValue(':lastname', $this->getLastname());
+    $statement->bindValue(':username', $this->getUsername());
+    $statement->bindValue(':email', $this->getEmail());
+    $statement->bindValue(':birthdate', $this->getBirthdate());
+    $statement->bindValue(':password', $password);
+
+
     $result = $statement->execute();
     //return $result;
     header("Location: index.php");
