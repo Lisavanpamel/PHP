@@ -39,7 +39,10 @@ if(!empty($_POST)){
   $user->getEmail();
   $user->setBirthdate($birthdate);
   $user->getBirthdate();
-  $user->setPassword($password, $password_confirm);
+  $user->setPassword($password);
+  $user->getPassword();
+  $user->setPassword_comfirm($password_confirm);
+  $user->getPassword_confirm();
   $result = $user->register();
 }
   else{
@@ -179,3 +182,4 @@ form
 
 
 </html>
+
