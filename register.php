@@ -8,62 +8,18 @@ require_once("classes/Db.class.php");
 // sessie opstarten
 session_start();
 
+
 $empty_field_error = false;
 $strong_password_error = false;
 $unequal_password_error = false;
 $email_error = false;
 
-// valideren of e-mail "@" en "." heeft
-
-function emailValidation($email){
-  if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    return false;
-    $email_error = true;
-  }
-  return true;
-}
-
-// valideren of password minstens 8 tekens telt
-function passwordStrenght($password){
-  if(strlen($password) < 8){
-    return false;
-    $strong_password_error = true;
-  }
-  return true;
-}
-
-// valideren of password en password confirm hetzelfde zijn
-function isPasswordEqual($password, $password_confirm){
-  if($password != $password_confirm){
-    return false;
-    $unequal_password_error = true;
-  }
-  return true;
-}
-
-
-function canRegister($email, $password, $password_confirm){
-  if(!emailValidation($email)){
-    return false;
-    $email_error = true;
-  }
-
-  if(!passwordStrenght($password)){
-    return false;
-    $strong_password_error = true;
-  }
-
-  if(!isPasswordEqual($password, $password_confirm)){
-    return false;
-    $unequal_password_error = true;
-  }
-  return true;
-}
 
 
 // valideren of alle velden zijn ingevuld
 if(!empty($_POST)){
   //return true;
+
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
   $username = $_POST['username'];
@@ -71,23 +27,27 @@ if(!empty($_POST)){
   $birthdate = $_POST['birthdate'];
   $password = $_POST['password'];
   $password_confirm = $_POST['password_confirm'];
+
+  $user = new User();
+  $user->setFirstname($firstname);
+  $user->getFirstname();
+  $user->setLastname($lastname);
+  $user->getLastname();
+  $user->setUsername($username);
+  $user->getUsername();
+  $user->setEmail($email);
+  $user->getEmail();
+  $user->setBirthdate($birthdate);
+  $user->getBirthdate();
+  $user->setPassword($password, $password_confirm);
+  $result = $user->register();
 }
   else{
     // foutboodschap tonen
-    $empty_field_error = true;
+    $empty_field_error = "Please, fill in all the fields";
   }
 
-  if(!empty($_POST) && canRegister($email, $password, $password_confirm)){
     // alles in orde? dan zullen we werken met getters en setters binnen User.class.php
-    $user = new User();
-    $user->setFirstname($firstname);
-    $user->setLastname($lastname);
-    $user->setUsername($username);
-    $user->setEmail($email);
-    $user->setBirthdate($birthdate);
-    $user->setPassword($password);
-    $result = $user->register();
-  }
 
 ?>
 
@@ -139,9 +99,7 @@ form
   color: rgb(143,15,12);
 }
 
-
 </style>
-
 
 
 <body>
@@ -151,8 +109,8 @@ form
   <form method="post" action="">
     <h1>Sign in</h1>
     <!-- foutboodschap wanneer niet alle velden zijn ingevuld -->
-    <?php if($empty_field_error == true): ?>
-    <div class="error_signin">Please, fill in all the fields</div>
+    <?php if(isset($empty_field_error)): ?>
+    <div class="error_signin"><?php echo $empty_field_error; ?></div>
     <?php endif; ?>
     <!-- firstname -->
     <div class="input">
@@ -181,8 +139,8 @@ form
     <br>
     <input type="text"name="email"placeholder="example@gmail.com">
   </div>
-  <?php if($email_error): ?>
-  <div class="error_signin">Invalid e-mail</div>
+  <?php if(isset($email_error)): ?>
+  <div class="error_signin"><?php echo $email_error; ?></div>
 <?php endif; ?>
 
   <!-- birthdate -->
@@ -199,8 +157,8 @@ form
       <br>
       <input type="password"name="password" value="">
     </div>
-    <?php if($strong_password_error): ?>
-    <div class="error_signin">Your password is not strong enough</div>
+    <?php if(isset($strong_password_error)): ?>
+    <div class="error_signin"><?php echo $strong_password_error; ?></div>
     <?php endif; ?>
     <!-- confirm password -->
     <div class="input">
@@ -208,8 +166,8 @@ form
       <br>
       <input type="password"name="password_confirm"value="">
     </div>
-    <?php if($unequal_password_error): ?>
-    <div class="error_signin">Passwords don't match</div>
+    <?php if(isset($unequal_password_error)): ?>
+    <div class="error_signin"><?php echo $unequal_password_error;?></div>
     <?php endif; ?>
 
       <!-- submit button -->
