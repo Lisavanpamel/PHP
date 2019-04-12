@@ -92,7 +92,7 @@ public function register(){
     return false;
     $strong_password_error = "Your password need at least 8 characters";
   }
-  if($password != $password_confirm){
+  if($this->password != $this->password_confirm){
     return false;
     $unequal_password_error = "Passwords don't match";
   }
@@ -131,3 +131,5 @@ public function register(){
 }
 
 ?>
+
+
