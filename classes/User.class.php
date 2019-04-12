@@ -75,7 +75,7 @@ public function getPassword_confirm(){
 }
 
 public function setPassword_confirm($password_confirm){
-  $this->password = $password_confirm;
+  $this->password_confirm = $password_confirm;
   return $this;
 }
 
@@ -131,5 +131,6 @@ public function register(){
 }
 
 ?>
+
 
 
