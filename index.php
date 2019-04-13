@@ -1,6 +1,10 @@
 <?php 
 
 include_once("includes/header.inc.php"); 
+include_once("classes/Post.class.php");
+
+$post = new Post();
+$posts = $post->getPosts();
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -12,6 +16,14 @@ include_once("includes/header.inc.php");
     <title>Document</title>
 </head>
 <body>
-    
+
+    <?php while($row = $posts->fetch()) : ?>
+        <div class="post" data-id="<?php echo $row['id']?>">
+            <img class= "img" src="<?php echo $row['post_img'] ?>" alt="post_img" height="auto">    
+            <p><?php echo $row['description'] ?></p>
+            </div>
+        </div>
+    <?php endwhile; ?>
+
 </body>
 </html>
