@@ -24,6 +24,11 @@
                     <a href="edit_profile.php">Edit profile</a>
                     <a href="logout.php">Log out</a>
                 </div>
+                  <!-- dit is de zoekbalk -->
+                <form class="search" method="post" action="search.php">
+                  <input type="text" name="search" placeholder ="Search a user or post">
+                  <input type="submit"value="Search">
+                </form>
             </div>
         </nav>
     </header>
