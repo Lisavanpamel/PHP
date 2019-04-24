@@ -9,6 +9,14 @@ class User {
   private $password;
   private $password_confirm;
   private $birthdate;
+  private $user_id; //is nodig om profiel aan te passen
+
+  //temp voor IMAGE UPLOAD
+  private $ImageName;
+  private $ImageSize;
+  private $ImageTmpName;
+
+
 
   // krijg de waarde van username
   public function getFirstname(){
@@ -137,7 +145,98 @@ public function register(){
 }
 
 
+///////// PROFIEL AANPASSEN FEATURE 3
+      public function getUser_id()
+      {
+        return $this->user_id;
+      }
+
+      public function setUser_id($user_id)
+      {
+        $this->user_id = htmlspecialchars($user_id);
+        return $this;
+      }
+
+
+      public function getUserInfo() {
+        //DB CONNECTIE
+        $conn = Db::getInstance();
+
+        //QUERY WHERE USER = $_SESSION
+        $statement = $conn->prepare("SELECT * FROM users WHERE id = :user_id LIMIT 1");
+        $statement->bindParam(":user_id", $this->user_id);
+        $statement->execute();
+        $result = $statement->fetch();
+        return $result;
+      }
+
+
+      public function getImageName()
+      {
+        return $this->ImageName;
+      }
+ 
+      public function setImageName($ImageName)
+      {
+        $this->ImageName = $ImageName;
+
+        return $this;
+      }
+
+      public function getImageSize()
+      {
+        return $this->ImageSize;
+      }
+
+      public function setImageSize($ImageSize)
+      {
+        $this->ImageSize = $ImageSize;
+
+        return $this;
+      }
+
+      public function getImageTmpName()
+      {
+        return $this->ImageTmpName;
+      }
+ 
+      public function setImageTmpName($ImageTmpName)
+      {
+        $this->ImageTmpName = $ImageTmpName;
+
+        return $this;
+      }
+
+      //sla profielafbeelding op in mapprofiel
+      public function SaveProfileImg() {
+        $file_name = $_SESSION['user_id'] . "-" . time() . "-" . $this->ImageName;
+        $file_size = $this->ImageSize;
+        $file_tmp = $this->ImageTmpName;
+        $tmp = explode('.', $file_name);
+        $file_ext = end($tmp);
+        $expensions = array("jpeg", "jpg", "png", "gif");
+
+        if (in_array($file_ext, $expensions) === false) {
+                throw new Exception("extension not allowed, please choose a JPEG or PNG or GIF file.");
+        }
+
+        if ($file_size > 2097152) {
+                throw new Exception('File size must be excately 2 MB');
+        }
+
+        if (empty($errors) == true) {
+                move_uploaded_file($file_tmp, "data/profile/" . $file_name);
+                return "data/profile/" . $file_name;
+        } else {
+                echo "Error";
+        }
 }
+
+
+
+
+
+    }
 
 ?>
 
