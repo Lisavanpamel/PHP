@@ -1,3 +1,8 @@
+
+html{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 body {
     margin: 0px;
     background-color:white;
@@ -8,6 +13,7 @@ nav {
     background-color: rgb(16, 64, 131);
     color: white;
     padding: 20px;
+    font-weight: bold;
 }
 
 nav > div.container {
@@ -59,3 +65,37 @@ nav > div.container {
     border-radius: 50%;
 }
 /* einde form */
+
+/* Begin Posts*/
+.post{
+    display: inline-block;
+    text-align: center;
+
+    width: 400px;
+    height: auto;
+    background-color:lightgray;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px;
+}
+
+.description{
+    background-color: white;
+    padding:0.5em;
+    border-radius: 5px;
+    text-align: left;
+}
+
+/* Einde Posts*/
+
+.show-posts{
+    margin: auto;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    border-radius: 7px;
+    background-color: rgb(16, 64, 131);
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
