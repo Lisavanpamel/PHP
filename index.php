@@ -1,11 +1,8 @@
 <?php 
-
 include_once("includes/header.inc.php"); 
 include_once("classes/Post.class.php");
-
 $post = new Post();
 $posts = $post->getPosts();
-
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +16,17 @@ $posts = $post->getPosts();
 
     <?php while($row = $posts->fetch()) : ?>
         <div class="post" data-id="<?php echo $row['id']?>">
-            <img class= "img" src="<?php echo $row['post_img'] ?>" alt="post_img" height="auto">    
+            <img class= "img" src="<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="60px">    
             <p><?php echo $row['description'] ?></p>
             </div>
         </div>
     <?php endwhile; ?>
+
+    <button class="show-posts">Show more</button>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
