@@ -58,10 +58,10 @@ if(!empty($_POST["passwordedit"]) && !empty($_POST["password"]) && !empty($_POST
             $message = "Password updated";
         }
     } else {
-        $error = "Passwoorden moeten gelijk zijn";
+        $error = "wachtwoorden moeten overeen komen";
     }
 } else {
-    $error = "Invullen aub.";
+    $error = "Gelieve dit in te vullen aub";
 }
 
 $profile = $user->getUserInfo();
