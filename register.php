@@ -106,6 +106,7 @@ form
 
 
 <body>
+<?php include_once("includes/header.inc.php"); ?>
 
 
   <form method="post" action="">
@@ -181,5 +182,3 @@ form
 
 
 </html>
-
-
