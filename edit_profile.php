@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 session_start();
 /* user.class.php linken */
 include_once("classes/User.class.php");
+require_once("classes/Db.class.php");
 
 
 $user = new User();
@@ -95,7 +96,7 @@ $profile = $user->getUserInfo();
 
         <div class="formitem">
             <label for="lastname">lastname</label>
-            <input type="text" name="lastname" id="lastname" value=""> 
+            <input type="text" name="lastname" id="lastname" value="">
         </div>
 
         <div class="formitem">
@@ -103,7 +104,7 @@ $profile = $user->getUserInfo();
             <input type="email" name="email" id="email" value="">
         </div>
 
-        <input type="submit" name="edit" value="Edit"> 
+        <input type="submit" name="edit" value="Edit">
     </form>
 
     <form method="post" action="" class="edit_profile">

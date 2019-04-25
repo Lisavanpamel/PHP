@@ -99,3 +99,42 @@ nav > div.container {
     font-weight: bold;
     padding: 10px;
 }
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+.search_results
+{
+  position:absolute;
+  top: 20%;
+  left: 5%;
+}
+
+.search_results h1
+{
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+=======
+=======
+>>>>>>> 57fa0a9621be4d78e5a9ac8f77dda874f384674b
+.post {
+	width: 30%;
+	margin: 10px auto;
+	border: 1px solid #cbcbcb;
+	padding: 5px 10px 0px 10px;
+}
+.like, .unlike, .likes_count {
+	color: blue;
+}
+.hide {
+	display: none;
+}
+.fa-thumbs-up, .fa-thumbs-o-up {
+	transform: rotateY(-180deg);
+	font-size: 1.3em;
+<<<<<<< HEAD
+}
+>>>>>>> 57fa0a9621be4d78e5a9ac8f77dda874f384674b
+=======
+}
+>>>>>>> 57fa0a9621be4d78e5a9ac8f77dda874f384674b

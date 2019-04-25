@@ -29,14 +29,16 @@ if(isset($_POST['search'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Search</title>
 </head>
 <body>
 
-  <div class="container">
+
+    <div class="search_results">
       <?php if($poststatement->rowCount() > 0 || $userstatement->rowCount() > 0 ): ?>
-      <p><?php echo $poststatement->rowCount() + $userstatement->rowCount() .  " searchresult(s) found for " . $searchkey; ?></p>
+      <h1><?php echo $poststatement->rowCount() + $userstatement->rowCount() .  " searchresult(s) found for " . "<span style = 'font-weight: bold'> &quot" . $searchkey . "&quot </span>"; ?></h1>
     <?php else: ?>
       <p>No results found </p>
       <?php endif; ?>
@@ -45,9 +47,12 @@ if(isset($_POST['search'])){
       <!--Toont de zoekresultaten van de posts -->
       <?php if($poststatement->rowCount() > 0): ?>
         <?php foreach($posts as $post): ?>
-          <a href=""><?php echo $post['title']; ?>
-            <div style="background-image: url(<?php echo $post['post_img']; ?>)"></div>
-          </a>
+          <div class="post" data-id="<?php echo $post['id']?>">
+          <!--User id: naam n profiel foto evt weergeven -->
+              <img class= "img" src="<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="60px">
+              <h2><?php echo $post['title']; ?></h2>
+              <p class="description"><?php echo $post['description'] ?></p>
+              </div>
         <?php endforeach; ?>
       <?php endif; ?>
 
@@ -59,9 +64,7 @@ if(isset($_POST['search'])){
             <a href=""><?php echo $user['user_name']; ?></a>
           <?php endforeach; ?>
         <?php endif; ?>
-
-  </div>
-
+</div>
 
 </body>
 </html>

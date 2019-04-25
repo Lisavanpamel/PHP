@@ -9,12 +9,6 @@ require_once("classes/Db.class.php");
 session_start();
 
 
-$empty_field_error = false;
-$strong_password_error = false;
-$unequal_password_error = false;
-$email_error = false;
-
-
 
 // valideren of alle velden zijn ingevuld
 if(!empty($_POST)){
@@ -43,7 +37,13 @@ if(!empty($_POST)){
   $user->getPassword();
   $user->setPassword_confirm($password_confirm);
   $user->getPassword_confirm();
-  $result = $user->register();
+  try{
+    $result = $user->register();
+  }
+  catch(Exception $t){
+    $error =  $t->getMessage();
+  }
+
 }
   else{
     // foutboodschap tonen
@@ -61,6 +61,7 @@ if(!empty($_POST)){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sign in</title>
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -112,8 +113,8 @@ form
   <form method="post" action="">
     <h1>Sign in</h1>
     <!-- foutboodschap wanneer niet alle velden zijn ingevuld -->
-    <?php if(isset($empty_field_error)): ?>
-    <div class="error_signin"><?php echo $empty_field_error; ?></div>
+    <?php if(isset($error)): ?>
+    <div class="error_signin"><?php echo $error; ?></div>
     <?php endif; ?>
     <!-- firstname -->
     <div class="input">
@@ -142,9 +143,7 @@ form
     <br>
     <input type="text"name="email"placeholder="example@gmail.com">
   </div>
-  <?php if(isset($email_error)): ?>
-  <div class="error_signin"><?php echo $email_error; ?></div>
-<?php endif; ?>
+
 
   <!-- birthdate -->
   <div class="input">
@@ -160,18 +159,14 @@ form
       <br>
       <input type="password"name="password" value="">
     </div>
-    <?php if(isset($strong_password_error)): ?>
-    <div class="error_signin"><?php echo $strong_password_error; ?></div>
-    <?php endif; ?>
+
     <!-- confirm password -->
     <div class="input">
       <label>Confirm Password</label>
       <br>
       <input type="password"name="password_confirm"value="">
     </div>
-    <?php if(isset($unequal_password_error)): ?>
-    <div class="error_signin"><?php echo $unequal_password_error;?></div>
-    <?php endif; ?>
+
 
       <!-- submit button -->
       <input class="submit" type="submit" value="Sign in">

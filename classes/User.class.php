@@ -93,16 +93,15 @@ public function register(){
   // form validation
   // voor register 2
   if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
-    return false;
-    $email_error = "Invalid e-mail";
+    throw new Exception("Invalid Email");
+
   }
   if(strlen($this->password) < 8){
-    return false;
-    $strong_password_error = "Your password need at least 8 characters";
+    throw new Exception("Your password needs at leats 8 characters");
+
   }
   if($this->password != $this->password_confirm){
-    return false;
-    $unequal_password_error = "Passwords don't match";
+    throw new Exception("Passwords don't match");
   }
   else{
   // voor register 2
@@ -175,7 +174,7 @@ public function register(){
       {
         return $this->ImageName;
       }
- 
+
       public function setImageName($ImageName)
       {
         $this->ImageName = $ImageName;
@@ -199,7 +198,7 @@ public function register(){
       {
         return $this->ImageTmpName;
       }
- 
+
       public function setImageTmpName($ImageTmpName)
       {
         $this->ImageTmpName = $ImageTmpName;
@@ -255,6 +254,3 @@ public function register(){
     }
 
 ?>
-
-
-
