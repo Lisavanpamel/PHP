@@ -28,8 +28,9 @@ if (!empty($_POST)){
 </head>
 <body>
 
-
+<p><a href="index.php">Back</a></p>
 <form action="" method="post">
+    
     <h1>Upload Post</h1>
 
     <?php if (isset($error)): ?>
@@ -37,9 +38,9 @@ if (!empty($_POST)){
     <?php endif; ?>
 
     <!--<input type="text" name="title" placeholder="Title">-->
-    <input type="file" name="upload_file"  accept="image/*">
+    <input type="file" name="upload_file">
     <input type="text" name="description" placeholder="Description">
-    <input type="submit">
+    <input type="submit" value="Upload">
 </form>
 
 </body>

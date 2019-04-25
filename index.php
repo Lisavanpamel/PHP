@@ -3,6 +3,8 @@ include_once("includes/header.inc.php");
 include_once("classes/Post.class.php");
 $post = new Post();
 $posts = $post->getPosts();
+
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
