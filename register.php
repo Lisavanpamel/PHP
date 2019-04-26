@@ -65,47 +65,6 @@ if(!empty($_POST)){
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<style>
-
-form
-{
-  position: absolute;
-  left: 20%;
-}
-
-.input
-{
-  margin-top: 2em;
-  font-size: 20px;
-}
-
-.input input
-{
-  width: 250px;
-  height: 35px;
-  font-size: 20px;
-}
-
-.submit
-{
-  width: 250px;
-  height: 35px;
-  font-size: 20px;
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
-
-.error_signin
-{
-  width: 250px;
-  padding: 15px;
-  background-color: rgba(255,59,10,0.5);
-  color: rgb(143,15,12);
-}
-
-</style>
-
-
 <body>
 <?php include_once("includes/header.inc.php"); ?>
 
@@ -158,6 +117,8 @@ form
       <label>Password</label>
       <br>
       <input type="password"name="password" value="">
+      <br>
+      <p>Your password need at least 8 characters</p>
     </div>
 
     <!-- confirm password -->

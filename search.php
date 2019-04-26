@@ -40,7 +40,7 @@ if(isset($_POST['search'])){
       <?php if($poststatement->rowCount() > 0 || $userstatement->rowCount() > 0 ): ?>
       <h1><?php echo $poststatement->rowCount() + $userstatement->rowCount() .  " searchresult(s) found for " . "<span style = 'font-weight: bold'> &quot" . $searchkey . "&quot </span>"; ?></h1>
     <?php else: ?>
-      <p>No results found </p>
+      <h1>No results found </h1>
       <?php endif; ?>
 
 
