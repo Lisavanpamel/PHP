@@ -1,6 +1,7 @@
 <?php 
 include_once("includes/header.inc.php"); 
 include_once("classes/Post.class.php");
+include_once("classes/Db.class.php");
 include_once("like.php");
 $post = new Post();
 $posts = $post->getPosts();
@@ -29,6 +30,7 @@ $posts = $post->getPosts();
         <!--Likes -->
         <?php 
         // determine if user has already liked this post
+        $con = mysqli_connect('localhost', 'root', 'root', 'php2019');
         $results = mysqli_query($con, "SELECT * FROM likes WHERE userid=1 AND postid=".$row['id']."");
 
         if (mysqli_num_rows($results) == 1 ): ?>

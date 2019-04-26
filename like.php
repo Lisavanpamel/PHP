@@ -1,4 +1,10 @@
 <?php 
+
+include_once("classes/Post.class.php");
+include_once("index.php");
+include_once("classes/Db.class.php");
+
+
 	// connect to the database
 	$con = mysqli_connect('localhost', 'root', 'root', 'php2019');
 
@@ -35,7 +41,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 </body>
