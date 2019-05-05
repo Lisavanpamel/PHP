@@ -247,6 +247,28 @@ public function register(){
         }
         }
 
+        public function searchUser($searchkey){
+          $conn = Db::getInstance();
+          $statement = $conn->prepare("select * from users where first_name like '$searchkey%'
+          union select * from users where last_name like '$searchkey%'
+          union select * from users where user_name like '$searchkey%'");
+          $statement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
+          $statement->execute();
+          $statement->fetchAll();
+          return $statement;
+        }
+
+        ////// detailpagina van een user
+
+        public function showUser(){
+          $conn = Db::getInstance();
+          $statement = $conn->prepare("select * from users, posts where users.id = 7");
+          $statement->execute();
+          $statement->fetchAll();
+          return $statement;
+        }
+
+
 
 
 

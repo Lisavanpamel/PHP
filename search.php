@@ -4,23 +4,23 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 require_once("classes/Db.class.php");
 include_once("includes/header.inc.php");
+include_once("classes/Post.class.php");
+include_once("classes/User.class.php");
 
 
 if(isset($_POST['search'])){
   $searchkey = $_POST['search'];
-  $conn = Db::getInstance();
-  $poststatement = $conn->prepare("select * from posts where title like '$searchkey%'");
-  $userstatement = $conn->prepare("select * from users where first_name like '$searchkey%'
-  union select * from users where last_name like '$searchkey%'
-  union select * from users where user_name like '$searchkey%'");
-  $poststatement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
-  $userstatement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
-  $poststatement->execute();
-  $userstatement->execute();
-  $posts = $poststatement->fetchAll();
-  $users = $userstatement->fetchAll();
+  //$search = new Post();
+  //$search->search($searchkey);
+  $search_posts = new Post();
+  $result_posts = $search_posts->searchPost($searchkey);
+  $search_users = new User();
+  $result_users = $search_users->searchUser($searchkey);
+
+
 
 }
+
   ?>
 
 <!DOCTYPE html>
@@ -35,35 +35,38 @@ if(isset($_POST['search'])){
 </head>
 <body>
 
-
-    <div class="search_results">
-      <?php if($poststatement->rowCount() > 0 || $userstatement->rowCount() > 0 ): ?>
-      <h1><?php echo $poststatement->rowCount() + $userstatement->rowCount() .  " searchresult(s) found for " . "<span style = 'font-weight: bold'> &quot" . $searchkey . "&quot </span>"; ?></h1>
-    <?php else: ?>
-      <h1>No results found </h1>
-      <?php endif; ?>
-
+  <div class="search_results">
+    <?php if($result_posts->rowCount() > 0 || $result_users->rowCount() > 0 ): ?>
+    <h1><?php echo $result_posts->rowCount() + $result_users->rowCount() .  " searchresult(s) found for " . "<span style = 'font-weight: bold'> &quot" . $searchkey . "&quot </span>"; ?></h1>
+  <?php else: ?>
+    <h1>No results found </h1>
+    <?php foreach($result_posts as $post): ?>
+      <!-- de "a href" gaat naar de detailagina van een post -->
+      <a href="readpost.php?id= <?php echo $post['id']; ?>">
+      <div class="post" data-id="<?php echo $post['id']?>">
+      <!--User id: naam n profiel foto evt weergeven -->
+          <img class= "img" src="<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="60px">
+          <p class="description"><?php echo $post['description'] ?></p>
+          </div>
+        </a>
+    <?php endforeach; ?>
+    <?php foreach($result_users as $user): ?>
+      <div style="background-image: url(<?php echo $user['user_img']; ?>)"></div>
+      <a href=""><?php echo $user['user_name']; ?></a>
+    <?php endforeach; ?>
+    <?php endif; ?>
 
       <!--Toont de zoekresultaten van de posts -->
-      <?php if($poststatement->rowCount() > 0): ?>
-        <?php foreach($posts as $post): ?>
-          <div class="post" data-id="<?php echo $post['id']?>">
-          <!--User id: naam n profiel foto evt weergeven -->
-              <img class= "img" src="<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="60px">
-              <h2><?php echo $post['title']; ?></h2>
-              <p class="description"><?php echo $post['description'] ?></p>
-              </div>
-        <?php endforeach; ?>
+      <?php if($result_posts->rowCount() > 0): ?>
+
+      <?php endif; ?>
+
+      <?php if($result_users->rowCount() > 0): ?>
+
       <?php endif; ?>
 
 
-      <!-- toont de zoekresultaten van de users -->
-        <?php if($userstatement->rowCount() > 0): ?>
-          <?php foreach($users as $user): ?>
-            <div style="background-image: url(<?php echo $user['user_img']; ?>)"></div>
-            <a href=""><?php echo $user['user_name']; ?></a>
-          <?php endforeach; ?>
-        <?php endif; ?>
+
 </div>
 
 </body>
