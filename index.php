@@ -25,9 +25,14 @@ $posts = $post->getPosts();
         <!--User id: naam n profiel foto evt weergeven -->
             <img class= "img" src="<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="60px">
             <p class="description"><?php echo $row['description'] ?></p>
+<<<<<<< HEAD
 
 
+=======
+            <p class="date"><?php echo $row['date'] ?></p>
+>>>>>>> e439f7ad456e4485d23dd54af92dce6ab38d0eaf
 
+            
         <!--Likes -->
         <?php
         // determine if user has already liked this post
