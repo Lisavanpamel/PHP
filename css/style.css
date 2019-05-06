@@ -1,6 +1,6 @@
 
 html{
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: sans-serif;
 }
 
 body {
@@ -13,7 +13,7 @@ nav {
     background-color: rgb(16, 64, 131);
     color: white;
     padding: 20px;
-    font-weight: bold;
+    font-size: 1em;
 }
 
 nav > div.container {
@@ -131,7 +131,6 @@ form
     border-radius: 5px;
     text-align: left;
 }
-
 /* Einde Posts*/
 
 .show-posts{
@@ -145,6 +144,69 @@ form
     font-weight: bold;
     padding: 10px;
 }
+
+/* Edit profile feature 3 */
+.IMDLogin{
+    text-align: center;
+}
+
+.btn {
+    font-family: sans-serif;
+    margin-top: 15px;
+    background-color: #1db954;
+    text-transform: uppercase;
+    width: 250px;
+    height: 45px;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+.edit_profile {
+    width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+}
+
+.edit_profile input {
+    width: 380px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+p {
+    padding-bottom: 30px;
+    text-align: center;
+    padding-top: 30px;
+    color: red;
+    font-size: 0.9em;
+    background-color: aliceblue;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin: 20px;
+    font-family: sans-serif;
+    color: #222342;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-family: sans-serif;
+    color: #222342;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid #d9dadc;
+}
+/* einde edit profile feature 3 */
 
 .post {
 	width: 30%;
