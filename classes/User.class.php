@@ -1,4 +1,3 @@
-
 <?php
 
 class User {
@@ -24,8 +23,15 @@ class User {
   }
 
   public function setFirstname($firstname){
-    $this->firstname = $firstname;
-    return $this;
+    if (empty($firstname)) {
+      throw new Exception("Firstname cannot be empty");
+    }
+    else {
+      $this->firstname = htmlspecialchars($firstname);
+      return $this;
+    } 
+    /*$this->firstname = $firstname;
+    return $this;*/
   }
 
   public function getLastname(){
@@ -33,8 +39,15 @@ class User {
   }
 
   public function setLastname($lastname){
-    $this->lastname = $lastname;
-    return $this;
+    if (empty($lastname)) {
+      throw new Exception("Lastname cannot be empty");
+    }
+    else {
+      $this->lastname = htmlspecialchars($lastname);
+      return $this;
+    } 
+    /*$this->lastname = $lastname;
+    return $this;*/
   }
 
 
