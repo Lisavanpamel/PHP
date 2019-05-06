@@ -83,8 +83,8 @@ class Post {
       $statement = $conn->prepare("select * from posts where title like '$searchkey%'");
       $statement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
       $statement->execute();
-      $statement->fetchAll();
-      return $statement;
+      $result = $statement->fetchAll();
+      return $result;
     }
 
 

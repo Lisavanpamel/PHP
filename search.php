@@ -36,9 +36,9 @@ if(isset($_POST['search'])){
 <body>
 
   <div class="search_results">
-    <?php if($result_posts->rowCount() > 0 || $result_users->rowCount() > 0 ): ?>
+    <?php //if($result_posts->rowCount() > 0 || $result_users->rowCount() > 0 ): ?>
     <h1><?php echo $result_posts->rowCount() + $result_users->rowCount() .  " searchresult(s) found for " . "<span style = 'font-weight: bold'> &quot" . $searchkey . "&quot </span>"; ?></h1>
-  <?php else: ?>
+  <?php //else: ?>
     <h1>No results found </h1>
     <?php foreach($result_posts as $post): ?>
       <!-- de "a href" gaat naar de detailagina van een post -->
@@ -54,7 +54,7 @@ if(isset($_POST['search'])){
       <div style="background-image: url(<?php echo $user['user_img']; ?>)"></div>
       <a href=""><?php echo $user['user_name']; ?></a>
     <?php endforeach; ?>
-    <?php endif; ?>
+    <?php //endif; ?>
 
       <!--Toont de zoekresultaten van de posts -->
       <?php if($result_posts->rowCount() > 0): ?>

@@ -254,22 +254,19 @@ public function register(){
           union select * from users where user_name like '$searchkey%'");
           $statement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
           $statement->execute();
-          $statement->fetchAll();
-          return $statement;
+          $result = $statement->fetchAll();
+          return $result;
         }
 
         ////// detailpagina van een user
 
-        public function showUser(){
+        public function showUser($id){
           $conn = Db::getInstance();
-          $statement = $conn->prepare("select * from users, posts where users.id = 7");
-          $statement->execute();
-          $statement->fetchAll();
-          return $statement;
+          $statement = $conn->prepare("select * from users where users.id like '$id'");
+          $statement->execute(array($id));
+          $result = $statement->fetch(PDO::FETCH_ASSOC);
+          return $result;
         }
-
-
-
 
 
 
