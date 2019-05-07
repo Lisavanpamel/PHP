@@ -3,6 +3,7 @@
 include_once("classes/Post.class.php");
 include_once("index.php");
 include_once("classes/Db.class.php");
+include_once("js/jquery.min.js");
 
 
 	// connect to the database
