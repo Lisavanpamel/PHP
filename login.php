@@ -14,7 +14,6 @@ session_start();
 	$result = mysqli_query($db,$sql);
 	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 	$active = $row['active'];
-	
 	$count = mysqli_num_rows($result);
 	
 	// If result matched $email and $password, table row must be 1 row
@@ -41,14 +40,6 @@ session_start();
 		<div class="form form--login">
 			<form action="" method="post">
 				<h2 form__title>Sign In</h2>
-
-				<?php if (isset($error)): ?>
-				<div class="form__error">
-					<p>
-						Sorry, we can't log you in with that email address and password. Can you try again?
-					</p>
-				</div>
-				<?php endif; ?>
 
 				<div class="form__field">
 					<label for="email">Email</label>
