@@ -25,6 +25,7 @@ $posts = $post->getPosts();
         <!--User id: naam n profiel foto evt weergeven -->
             <img class= "img" src="<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="60px">
             <p class="description"><?php echo $row['description'] ?></p>
+            <p class="date"><?php echo $row['date'] ?></p>
             
             <!-- user already likes post -->
 			<span class="unlike fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span> 
