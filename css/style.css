@@ -1,6 +1,6 @@
 
 html{
-    font-family: sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 body {
@@ -13,7 +13,7 @@ nav {
     background-color: rgb(16, 64, 131);
     color: white;
     padding: 20px;
-    font-size: 1em;
+    font-weight: bold;
 }
 
 nav > div.container {
@@ -35,52 +35,6 @@ nav > div.container {
     margin-left: 50px;
 }
 /* einde navigatie */
-
-/* registreren */
-
-.input p
-{
-  font-size: 12px;
-  color: rgb(143,15,12);
-}
-form
-{
-  position: absolute;
-  left: 20%;
-}
-
-.input
-{
-  margin-top: 2em;
-  font-size: 20px;
-}
-
-.input input
-{
-  width: 250px;
-  height: 35px;
-  font-size: 20px;
-}
-
-.submit
-{
-  width: 250px;
-  height: 35px;
-  font-size: 20px;
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
-
-.error_signin
-{
-  width: 250px;
-  padding: 15px;
-  background-color: rgba(255,59,10,0.5);
-  color: rgb(143,15,12);
-}
-
-
-
 
 /* form */
 .formitem {
@@ -131,6 +85,7 @@ form
     border-radius: 5px;
     text-align: left;
 }
+
 /* Einde Posts*/
 
 .show-posts{
@@ -144,69 +99,6 @@ form
     font-weight: bold;
     padding: 10px;
 }
-
-/* Edit profile feature 3 */
-.IMDLogin{
-    text-align: center;
-}
-
-.btn {
-    font-family: sans-serif;
-    margin-top: 15px;
-    background-color: #1db954;
-    text-transform: uppercase;
-    width: 250px;
-    height: 45px;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    border-radius: 30px;
-}
-
-.edit_profile {
-    width: 380px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 50px;
-}
-
-.edit_profile input {
-    width: 380px;
-    height: 40px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-}
-
-p {
-    padding-bottom: 30px;
-    text-align: center;
-    padding-top: 30px;
-    color: red;
-    font-size: 0.9em;
-    background-color: aliceblue;
-    margin-bottom: 30px;
-}
-
-h2 {
-    margin: 20px;
-    font-family: sans-serif;
-    color: #222342;
-    font-size: 0.9em;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-h1 {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    font-family: sans-serif;
-    color: #222342;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-bottom: 1px solid #d9dadc;
-}
-/* einde edit profile feature 3 */
 
 .post {
 	width: 30%;
@@ -223,20 +115,4 @@ h1 {
 .fa-thumbs-up, .fa-thumbs-o-up {
 	transform: rotateY(-180deg);
 	font-size: 1.3em;
-}
-
-/* search results */
-
-.search_results{
-  position: absolute;
-  top: 20%;
-  left: 5%;
-  width: 100%;
-
-}
-
-.search_results h1
-{
-  font-size: 20px;
-  margin-bottom: 50px;
 }
