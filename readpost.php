@@ -7,14 +7,20 @@
   include_once("classes/Post.class.php");
   include_once("classes/Db.class.php");
 
+  $id = null;
   if ( !empty($_GET['id'])) {
       $id = $_REQUEST['id'];
-      $detail_post = new Post;
-      $detail_post->getPost($id);
-
   }
 
+  if ( null==$id ) {
+      header("Location: readpost.php");
+      echo "this post doesn't exist anymore";
+  }
+  else {
+    $p = new Post();
+    $post = $p->showPost($id);
 
+  }
 
  ?>
 <!DOCTYPE html>
@@ -30,13 +36,17 @@
 <body>
 
 <!-- toon de post -->
-<div class="post" data-id="<?php echo $post['id']?>">
+<div class="detail_post" data-id="<?php echo $post['id']?>">
 <!--User id: naam n profiel foto evt weergeven -->
-    <img class= "img" src="<?php echo $post['post_img']; ?>" alt="post_img" height="auto" width="60px">
+    <img class= "img" src="<?php echo $post['post_img']; ?>" alt="post_img" height="auto" width="250px">
     <p class="description"><?php echo $post['description']; ?></p>
+  </div>
 
 <!-- toon de commentaren -->
+<div class="comments">
+<h2>Comments</h2>
 
+</div>
 
 
 </body>

@@ -17,6 +17,7 @@ if ( null==$id ) {
 else {
   $u = new User();
   $users = $u->showUser($id);
+  $posts = $u->showPostsFromUser($id);
 }
 
 
@@ -33,49 +34,7 @@ else {
     <title>User</title>
 </head>
 
-<style>
 
-.user_header
-{
-  width: 100%;
-  height: 200px;
-  background-color: grey;
-}
-
-.profile_pic
-{
-  width: 100px;
-  height: 100px;
-  border: 1px solid #000;
-  border-radius: 200px;
-}
-
-.profile_pic, .user_header p
-{
-  position:relative;
-  top: 10%;
-  left: 35%;
-}
-
-.about_user
-{
-  margin-top: 50px;
-}
-
-h1
-{
-  color: red;
-  font-weight: bold;
-}
-
-h2
-{
-  margin-top: 20px;
-  color: red;
-}
-
-
-</style>
 
 <body>
 <?php include_once("includes/header.inc.php"); ?>
@@ -86,12 +45,10 @@ h2
 <br>
 <p><?php echo $users['user_name']; ?></p>
 </div>
+<div class="content_about_user">
 <div class="about_user">
 <h1>About</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-  fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p> <?php echo $users['bio']; ?></p>
 
 <h2>Full name</h2>
   <p><?php echo $users['first_name'] . " " . $users['last_name']; ?></p>
@@ -101,7 +58,21 @@ h2
 </div>
 
 <!-- alle posts van de user -->
-
+<div class="posts_from_user">
+  <h1>Images</h1>
+<?php if(count($posts) < 0): ?>
+  <p>This person has no images yet</p>
+<?php else: ?>
+<?php foreach($posts as $post): ?>
+  <div class="post" data-id="<?php echo $post['posts.id']?>">
+  <!--User id: naam n profiel foto evt weergeven -->
+      <img class= "img" src="<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="60px">
+      <p class="description"><?php echo $post['description'] ?></p>
+</div>
+<?php endforeach; ?>
+<?php endif; ?>
+</div>
+</div>
 
 </body>
 

@@ -29,7 +29,7 @@ class User {
     else {
       $this->firstname = htmlspecialchars($firstname);
       return $this;
-    } 
+    }
     /*$this->firstname = $firstname;
     return $this;*/
   }
@@ -45,7 +45,7 @@ class User {
     else {
       $this->lastname = htmlspecialchars($lastname);
       return $this;
-    } 
+    }
     /*$this->lastname = $lastname;
     return $this;*/
   }
@@ -259,7 +259,7 @@ public function register(){
         return false;
         }
         }
-
+        ////// zoek een user
         public function searchUser($searchkey){
           $conn = Db::getInstance();
           $statement = $conn->prepare("select * from users where first_name like '$searchkey%'
@@ -271,13 +271,23 @@ public function register(){
           return $result;
         }
 
+
         ////// detailpagina van een user
 
         public function showUser($id){
           $conn = Db::getInstance();
           $statement = $conn->prepare("select * from users where users.id like '$id'");
+          //$statement = $conn->prepare("select * from users, posts where posts.user_id = users.id and users.id like '$id'");
           $statement->execute(array($id));
           $result = $statement->fetch(PDO::FETCH_ASSOC);
+          return $result;
+        }
+
+        public function showPostsFromUser($id){
+          $conn = Db::getInstance();
+          $statement = $conn->prepare("select * from users, posts where posts.user_id = users.id and users.id like '$id'");
+          $statement->execute(array($id));
+          $result = $statement->fetchAll();
           return $result;
         }
 

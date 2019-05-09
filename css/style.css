@@ -38,40 +38,47 @@ nav > div.container {
 
 /* registreren */
 
-.input p
+.input_signup p
 {
   font-size: 12px;
   color: rgb(143,15,12);
 }
-form
+.form_signup
 {
   position: absolute;
-  left: 20%;
+  left: 10%;
+  top: 20%;
 }
 
-.input
+.input_signup
 {
   margin-top: 2em;
   font-size: 20px;
 }
 
-.input input
+.input_signup input
 {
-  width: 250px;
-  height: 35px;
-  font-size: 20px;
+  width: 350px;
+  height: 40px;
+  margin-bottom: 10px;
+  padding-left: 10px;
 }
 
-.submit
+.submit_signup
 {
+  font-family: sans-serif;
+  margin-top: 15px;
+  background-color: #1db954;
+  text-transform: uppercase;
   width: 250px;
-  height: 35px;
-  font-size: 20px;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  height: 45px;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 30px;
 }
 
-.error_signin
+.error_signup
 {
   width: 250px;
   padding: 15px;
@@ -79,7 +86,11 @@ form
   color: rgb(143,15,12);
 }
 
-
+.link_to_login
+{
+  position: relative;
+  top: 60%;
+}
 
 
 /* form */
@@ -177,13 +188,13 @@ form
     padding-left: 10px;
 }
 
-p {
+.form__error p {
     padding-bottom: 30px;
     text-align: center;
     padding-top: 30px;
     color: red;
     font-size: 0.9em;
-    background-color: aliceblue;
+
     margin-bottom: 30px;
 }
 
@@ -226,6 +237,24 @@ h1 {
 }
 
 /* search results */
+.search input:first-child
+{
+  width: 450px;
+  height: 35px;
+}
+
+.btn_search
+{
+  font-family: sans-serif;
+  margin-top: 15px;
+  background-color: #1db954;
+  text-transform: uppercase;
+  width: 100px;
+  height: 35px;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+}
 
 .search_results{
   position: absolute;
@@ -239,4 +268,75 @@ h1 {
 {
   font-size: 20px;
   margin-bottom: 50px;
+}
+
+.search_results nav
+{
+  background-color: inherit;
+  font-size: 20px;
+}
+
+.search_results nav a
+{
+  text-decoration: none;
+  margin-right: 50px;
+  color: #1db954;
+
+}
+
+.results_by_type
+{
+  border-bottom: 3px solid #1db954;
+}
+
+#user_results a
+{
+  margin-bottom: 20px;
+}
+
+/* detailpagina van andere gebruiker */
+
+.user_header
+{
+  width: 100%;
+  height: 200px;
+  background-color: aliceblue;
+}
+
+.profile_pic
+{
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+  border-radius: 200px;
+}
+
+.profile_pic, .user_header p
+{
+  position:relative;
+  top: 10%;
+  left: 35%;
+}
+
+.content_about_user
+{
+  margin-top: 50px;
+  position: absolute;
+  left: 10%;
+  width: 80%;
+}
+
+.posts_from_user
+{
+  margin-top: 100px;
+}
+
+/* detail pagina van een post */
+
+.detail_post
+{
+  width: 80%;
+	margin: 10px auto;
+	border: 1px solid #cbcbcb;
+	padding: 5px 10px 0px 10px;
 }

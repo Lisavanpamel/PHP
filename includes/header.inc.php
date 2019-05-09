@@ -27,9 +27,9 @@
                     <a href="logout.php">Log out</a>
                 </div>
                   <!-- dit is de zoekbalk -->
-                <form class="search" method="post" action="search.php">
+                <form class="search" method="get" action="search.php">
                   <input type="text" name="search" placeholder ="Search a user or post">
-                  <input type="submit"value="Search">
+                  <input class="btn_search"type="submit"value="Search">
                 </form>
             </div>
         </nav>

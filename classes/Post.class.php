@@ -57,30 +57,11 @@ class Post {
         $statement->execute();
         return $statement;
     }
-    ///////// search post or user
-    /*
-    public function search($searchkey){
-      $conn = Db::getInstance();
-      $poststatement = $conn->prepare("select * from posts where title like '$searchkey%'");
-      $userstatement = $conn->prepare("select * from users where first_name like '$searchkey%'
-      union select * from users where last_name like '$searchkey%'
-      union select * from users where user_name like '$searchkey%'");
-      $poststatement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
-      $userstatement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
-      $posts = $poststatement->execute();
-      $users = $userstatement->execute();
-      //$posts = $poststatement->fetchAll();
-      //$users = $userstatement->fetchAll();
-
-
-    }
-    */
-
 
 
     public function searchPost($searchkey){
       $conn = Db::getInstance();
-      $statement = $conn->prepare("select * from posts where title like '$searchkey%'");
+      $statement = $conn->prepare("select * from posts where description like '$searchkey%'");
       $statement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
       $statement->execute();
       $result = $statement->fetchAll();
@@ -88,16 +69,13 @@ class Post {
     }
 
 
-
-
 /////// detail page van een post
-    public function getPost($id){
+    public function showPost($id){
       $conn = Db::getInstance();
-      $statement = $conn->prepare("select * from posts where id= ?");
+      $statement = $conn->prepare("select * from posts where id= '$id'");
       $statement->execute(array($id));
-      $post = $statement->fetch(PDO::FETCH_ASSOC);
-
-
+      $result = $statement->fetch(PDO::FETCH_ASSOC);
+      return $result;
     }
 
 

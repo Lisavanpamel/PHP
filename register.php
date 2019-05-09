@@ -69,43 +69,43 @@ if(!empty($_POST)){
 <?php include_once("includes/header.inc.php"); ?>
 
 
-  <form method="post" action="">
+  <form class="form_signup" method="post" action="">
     <h1>Sign in</h1>
     <!-- foutboodschap wanneer niet alle velden zijn ingevuld -->
     <?php if(isset($error)): ?>
-    <div class="error_signin"><?php echo $error; ?></div>
+    <div class="error_signup"><?php echo $error; ?></div>
     <?php endif; ?>
     <!-- firstname -->
-    <div class="input">
+    <div class="input_signup">
       <label>Firstname</label>
       <br>
-      <input type="text"name="firstname"value="">
+      <input type="text"name="firstname"value="" placeholder="First name">
     </div>
 
     <!-- lastname -->
-    <div class="input">
+    <div class="input_signup">
       <label>Lastname</label>
       <br>
-      <input type="text"name="lastname"value="">
+      <input type="text"name="lastname"value="" placeholder="Last name">
     </div>
 
     <!-- username -->
-    <div class="input">
+    <div class="input_signup">
     <label>Username</label>
     <br>
-    <input type="text"name="username"value="">
+    <input type="text"name="username"value="" placeholder="User name">
   </div>
 
   <!-- e-mail -->
-  <div class="input">
+  <div class="input_signup">
     <label>E-mail</label>
     <br>
-    <input type="text"name="email"placeholder="example@gmail.com">
+    <input type="text"name="email" placeholder="example@gmail.com">
   </div>
 
 
   <!-- birthdate -->
-  <div class="input">
+  <div class="input_signup">
     <label>Birthdate</label>
     <br>
     <input type="date"name="birthdate">
@@ -113,26 +113,30 @@ if(!empty($_POST)){
 
 
     <!-- password -->
-    <div class="input">
+    <div class="input_signup">
       <label>Password</label>
       <br>
-      <input type="password"name="password" value="">
+      <input type="password"name="password" value="" placeholder="Password">
       <br>
       <p>Your password need at least 8 characters</p>
     </div>
 
     <!-- confirm password -->
-    <div class="input">
+    <div class="input_signup">
       <label>Confirm Password</label>
       <br>
-      <input type="password"name="password_confirm"value="">
+      <input type="password"name="password_confirm"value="" placeholder="Retype Password">
     </div>
 
 
       <!-- submit button -->
-      <input class="submit" type="submit" value="Sign in">
-
+      <input class="submit_signup" type="submit" value="Sign in">
+      
+      <div class="link_to_login">
+        <p>Do you already have an account?<a href="login.php">Sign in here</a></p>
+      </div>
   </form>
+
 
 </body>
 

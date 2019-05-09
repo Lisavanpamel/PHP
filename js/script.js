@@ -23,3 +23,23 @@ $(document).ready(function(){
         j=0;
     })
 })
+
+// zoeken op images en user
+
+$(document).ready(function(){
+  var posts = $('#post_results').show();
+  var users = $('#user_results').hide();
+
+  $('#href_post').on('click', function(){
+    $(posts).show();
+    $(users).hide();
+    $('#href_post').addClass("results_by_type");
+    $('#href_user').removeClass("results_by_type");
+  })
+  $('#href_user').on('click', function(){
+    $(users).show();
+    $(posts).hide();
+    $('#href_user').addClass("results_by_type");
+    $("#href_post").removeClass("results_by_type");
+  })
+});
