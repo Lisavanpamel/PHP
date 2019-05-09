@@ -1,10 +1,4 @@
 <?php 
-
-include_once("classes/Post.class.php");
-include_once("index.php");
-include_once("classes/Db.class.php");
-
-
 	// connect to the database
 	$con = mysqli_connect('localhost', 'root', 'root', 'php2019');
 
@@ -40,9 +34,73 @@ include_once("classes/Db.class.php");
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<title>PHP Project</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<!-- display posts gotten from the database  -->
+		<?php while ($row = mysqli_fetch_array($posts)) { ?>
+				<?php 
+					// determine if user has already liked this post
+					$results = mysqli_query($con, "SELECT * FROM likes WHERE userid=1 AND postid=".$row['id']."");
+
+					if (mysqli_num_rows($results) == 1 ): ?>
+
+					<?php else: ?>
+						
+					<?php endif ?>
+
+				</div>
+			</div>
+
+		<?php } ?>
+
+
+<!-- Add Jquery to page -->
+<script src="jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		// when the user clicks on like
+		$('.like').on('click', function(){
+			var postid = $(this).data('id');
+			    $post = $(this);
+
+			$.ajax({
+				url: 'index.php',
+				type: 'post',
+				data: {
+					'liked': 1,
+					'postid': postid
+				},
+				success: function(response){
+					$post.parent().find('span.likes_count').text(response + " likes");
+					$post.addClass('hide');
+					$post.siblings().removeClass('hide');
+				}
+			});
+		});
+
+		// when the user clicks on unlike
+		$('.unlike').on('click', function(){
+			var postid = $(this).data('id');
+		    $post = $(this);
+
+			$.ajax({
+				url: 'index.php',
+				type: 'post',
+				data: {
+					'unliked': 1,
+					'postid': postid
+				},
+				success: function(response){
+					$post.parent().find('span.likes_count').text(response + " likes");
+					$post.addClass('hide');
+					$post.siblings().removeClass('hide');
+				}
+			});
+		});
+	});
+</script>
 </body>
 </html>
