@@ -36,7 +36,7 @@ nav > div.container {
 }
 /* einde navigatie */
 
-<<<<<<< HEAD
+
 /* registreren */
 
 .input_signup p
@@ -87,15 +87,11 @@ nav > div.container {
   color: rgb(143,15,12);
 }
 
-.link_to_login
-{
-  position: relative;
-  top: 60%;
-}
 
 
-=======
->>>>>>> cf17582ae74a6ccb9c260a0d17475c902f20c98c
+
+
+
 /* form */
 .formitem {
     display: flex;
@@ -160,7 +156,6 @@ nav > div.container {
     padding: 10px;
 }
 
-<<<<<<< HEAD
 /* Edit profile feature 3 */
 .IMDLogin{
     text-align: center;
@@ -224,8 +219,6 @@ h1 {
 }
 /* einde edit profile feature 3 */
 
-=======
->>>>>>> cf17582ae74a6ccb9c260a0d17475c902f20c98c
 .post {
 	width: 30%;
 	margin: 10px auto;
@@ -241,7 +234,6 @@ h1 {
 .fa-thumbs-up, .fa-thumbs-o-up {
 	transform: rotateY(-180deg);
 	font-size: 1.3em;
-<<<<<<< HEAD
 }
 
 /* search results */
@@ -348,6 +340,3 @@ h1 {
 	border: 1px solid #cbcbcb;
 	padding: 5px 10px 0px 10px;
 }
-=======
-}
->>>>>>> cf17582ae74a6ccb9c260a0d17475c902f20c98c
