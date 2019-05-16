@@ -1,11 +1,33 @@
 
 html{
     font-family: 'Noto Sans KR', sans-serif;
+    position:relative;
+    min-height: 100%;
 }
 
 body {
     margin: 0px;
     background-color:white;
+}
+
+h2 {
+    margin: 20px;
+    font-family: sans-serif;
+    color: #222342;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-family: sans-serif;
+    color: #222342;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid #d9dadc;
 }
 
 /* navigatie */
@@ -36,6 +58,22 @@ nav > div.container {
 }
 /* einde navigatie */
 
+/* footer */
+
+footer
+{
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+footer p, footer a
+{
+  position: relative;
+  display: inline;
+}
 
 /* registreren */
 
@@ -46,9 +84,9 @@ nav > div.container {
 }
 .form_signup
 {
-  position: absolute;
-  left: 10%;
-  top: 20%;
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-bottom: 10%;
 }
 
 .input_signup
@@ -87,9 +125,11 @@ nav > div.container {
   color: rgb(143,15,12);
 }
 
-
-
-
+.link_to_login
+{
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
 
 
 /* form */
@@ -119,6 +159,16 @@ nav > div.container {
     width: 100px;
     height: 100px;
     border-radius: 50%;
+}
+
+.form__error p {
+    padding-bottom: 30px;
+    text-align: center;
+    padding-top: 30px;
+    color: red;
+    font-size: 0.9em;
+    background-color: aliceblue;
+    margin-bottom: 30px;
 }
 /* einde form */
 
@@ -198,25 +248,7 @@ nav > div.container {
     margin-bottom: 30px;
 }
 
-h2 {
-    margin: 20px;
-    font-family: sans-serif;
-    color: #222342;
-    font-size: 0.9em;
-    text-transform: uppercase;
-    font-weight: bold;
-}
 
-h1 {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    font-family: sans-serif;
-    color: #222342;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-bottom: 1px solid #d9dadc;
-}
 /* einde edit profile feature 3 */
 
 .post {
@@ -237,9 +269,13 @@ h1 {
 }
 
 /* search results */
+.search input
+{
+  display: inline;
+}
 .search input:first-child
 {
-  width: 450px;
+  width: 300px;
   height: 35px;
 }
 
@@ -294,7 +330,67 @@ h1 {
   margin-bottom: 20px;
 }
 
+#user_results
+{
+  margin-top: 2em;
+  display: grid;
+  /*grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));*/
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 1em;
+}
+
+#user_results div
+{
+  border: 1px solid #000;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+}
+
+#user_results a
+{
+  /*background-position: center center;*/
+  max-width: 300px;
+}
+
+
 /* detailpagina van andere gebruiker */
+
+.follow_button
+{
+  font-family: sans-serif;
+  margin-top: 15px;
+  background-color: #1db954;
+  text-transform: uppercase;
+  width: 100px;
+  height: 35px;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  margin-left: 35%;
+  margin-top: 40px;
+}
+
+
+.follow
+{
+  display: inline;
+  position: relative;
+  top: 50px;
+  left: 20%;
+}
+
+.follow a
+{
+  /*border: 1px solid #000;*/
+  padding: 20px;
+}
+
+
+.user_header p
+{
+  font-size: 25px;
+}
 
 .user_header
 {
@@ -320,15 +416,16 @@ h1 {
 
 .content_about_user
 {
-  margin-top: 50px;
-  position: absolute;
-  left: 10%;
+  margin-top: 80px;
+  margin-left: 10%;
+  margin-bottom: 20%;
   width: 80%;
 }
 
 .posts_from_user
 {
   margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 /* detail pagina van een post */
@@ -339,4 +436,10 @@ h1 {
 	margin: 10px auto;
 	border: 1px solid #cbcbcb;
 	padding: 5px 10px 0px 10px;
+}
+
+@media screen and (min-width: 800px){
+
+
+
 }

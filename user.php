@@ -31,7 +31,7 @@ else {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>User</title>
+    <title><?php echo $users['user_name']; ?></title>
 </head>
 
 
@@ -41,12 +41,21 @@ else {
 <!-- header waarin de profielfoto van de user zit -->
 <div class="user_header">
 
-<div class="profile_pic" style="background-image: url();"></div>
+<div class="profile_pic" style="background-image: url(<?php $users['user_img']; ?>);"></div>
 <br>
 <p><?php echo $users['user_name']; ?></p>
+<button class="follow_button">Follow</button>
+</div>
+
+<div class="follow">
+<a href="#"><span>20K </span>followers</a>
+<a href="#"><span>10K </span>following</a>
 </div>
 <div class="content_about_user">
+
 <div class="about_user">
+
+
 <h1>About</h1>
 <p> <?php echo $users['bio']; ?></p>
 
@@ -60,7 +69,7 @@ else {
 <!-- alle posts van de user -->
 <div class="posts_from_user">
   <h1>Images</h1>
-<?php if(count($posts) < 0): ?>
+<?php if(count($posts) == 0 ): ?>
   <p>This person has no images yet</p>
 <?php else: ?>
 <?php foreach($posts as $post): ?>
@@ -72,8 +81,9 @@ else {
 <?php endforeach; ?>
 <?php endif; ?>
 </div>
-</div>
 
+</div>
+<?php include_once("includes/footer.inc.php"); ?>
 </body>
 
 

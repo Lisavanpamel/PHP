@@ -30,7 +30,7 @@ if (!empty($_POST)){
 
 <p><a href="index.php">Back</a></p>
 <form action="" method="post">
-    
+
     <h1>Upload Post</h1>
 
     <?php if (isset($error)): ?>
@@ -43,6 +43,6 @@ if (!empty($_POST)){
     <input type="text" name="description" placeholder="Description">
     <input type="submit" value="Upload">
 </form>
-
+<?php include_once("includes/footer.inc.php"); ?>
 </body>
 </html>

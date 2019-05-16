@@ -4,10 +4,10 @@
 	if ( !empty($_POST) ) {
 		// email en password opvragen
 		$email = $_POST['email'];
-		$password = $_POST['password']; 
+		$password = $_POST['password'];
 		// hash opvragen op basis van email
 		$conn = new PDO("mysql:host=localhost;dbname=php2019;", "root", "root", null);
-		// check of rehash van password gelijk is aan hash uit databank 
+		// check of rehash van password gelijk is aan hash uit databank
 		$statement = $conn->prepare("SELECT * FROM users WHERE email= :email");
 		$statement->bindParam(":email", $email);
 		$result = $statement->execute();
@@ -15,7 +15,7 @@
 		$user = $statement->fetch(PDO::FETCH_ASSOC);
 		// ja -> login
 		if(password_verify($password, $user['password']) ){
-			session_start(); 
+			session_start();
 			$_SESSION['user_name']= $user['id'];
 			header('Location: index.php');
 		} else {
@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="form__field">
-					<input type="submit" value="Sign in" class="btn btn--primary">	
+					<input type="submit" value="Sign in" class="btn btn--primary">
 					<input type="checkbox" id="rememberMe"><label for="rememberMe" class="label__inline">Remember me</label>
 				</div>
 
@@ -64,5 +64,6 @@
 			</form>
 		</div>
 	</div>
+	<?php include_once("includes/footer.inc.php"); ?>
 </body>
 </html>

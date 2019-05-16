@@ -60,17 +60,17 @@ if(!empty($_POST)){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Sign in</title>
+  <title>Sign up</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-<?php include_once("includes/header.inc.php"); ?>
+<?php /*include_once("includes/header.inc.php");*/ ?>
 
 
   <form class="form_signup" method="post" action="">
-    <h1>Sign in</h1>
+    <h1>Sign up</h1>
     <!-- foutboodschap wanneer niet alle velden zijn ingevuld -->
     <?php if(isset($error)): ?>
     <div class="error_signup"><?php echo $error; ?></div>
@@ -130,14 +130,14 @@ if(!empty($_POST)){
 
 
       <!-- submit button -->
-      <input class="submit_signup" type="submit" value="Sign in">
-      
+      <input class="submit_signup" type="submit" value="Sign up">
+
       <div class="link_to_login">
         <p>Do you already have an account?<a href="login.php">Sign in here</a></p>
       </div>
   </form>
 
-
+<?php include_once("includes/footer.inc.php"); ?>
 </body>
 
 

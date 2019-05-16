@@ -78,6 +78,16 @@ class Post {
       return $result;
     }
 
+/////// toont de post van de gebruiker op de update pagina
+
+  public function showYourPost($id){
+    $conn = Db::getInstance();
+    $statement = $conn->prepare("select * from posts where id= '$id'");
+    $statement->execute(array($id));
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    return $result;
+  }
+
 
 
 }
