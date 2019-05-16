@@ -66,12 +66,6 @@ if(!empty($_POST)){
 </head>
 
 <body>
-<<<<<<< HEAD
-=======
-<?php /*include_once("includes/header.inc.php");*/ ?>
-
-
->>>>>>> origin/master
   <form class="form_signup" method="post" action="">
     <h1>Sign up</h1>
     <!-- foutboodschap wanneer niet alle velden zijn ingevuld -->

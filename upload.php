@@ -46,10 +46,12 @@
 </head>
 <body>
 
-<p><a href="index.php">Back</a></p>
-<form action="" method="post">
-
-    <h1>Upload Post</h1>
+<header class="uploadHeader">
+    <nav class="uploadNav">
+        <a href="index.php" class="back">Back</a>
+        <h1>Upload Post</h1>
+    </nav>
+</header>
 
 <div id="divFormUpload"></div>
     <form id="uploadForm" action="" method="post" enctype="multipart/form-data" id="uploadForm">
@@ -57,24 +59,15 @@
         <?php if (isset($error)): ?>
             <div><?php echo $error; ?></div>
         <?php endif; ?>
-
-<<<<<<< HEAD
+        
         <!--<input type="text" name="title" placeholder="Title">-->
         <input id="uploadImage" type="file" name="upload_file" onchange="readURL(this);">
         </br>
-        <textarea id="description" type="text" name="description" placeholder="Description"></textarea>
+        <input id="description" type="text" name="description" placeholder="Description">
         </br>
         <input id="submitUpload" type="submit" value="UPLOAD">
     </form>
-</div>
+</div>>
 
-=======
-    <!--<input type="text" name="title" placeholder="Title">-->
-    <input type="file" name="upload_file">
-    <input type="text" name="description" placeholder="Description">
-    <input type="submit" value="Upload">
-</form>
-<?php include_once("includes/footer.inc.php"); ?>
->>>>>>> origin/master
 </body>
 </html>

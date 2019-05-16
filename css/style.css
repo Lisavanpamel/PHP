@@ -188,9 +188,15 @@ footer p, footer a
 .description{
     background-color: white;
     padding:0.5em;
+    margin:1em;
     border-radius: 5px;
     text-align: left;
 }
+.imgPost{
+  margin:0 auto;
+  padding-bottom: 1em;
+}
+
 
 /* Einde Posts*/
 
