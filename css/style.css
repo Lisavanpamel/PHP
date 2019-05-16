@@ -99,3 +99,26 @@ nav > div.container {
     font-weight: bold;
     padding: 10px;
 }
+
+/* UPLOAD FORM*/
+#uploadForm{
+    display: inline-block;
+    text-align: center;
+
+}
+#uploadForm h1{
+    font-size: 2em;
+}
+
+.back{
+    display: block;
+    text-decoration: none;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 2px;
+    width: 40px;
+    height: 18px;
+    background-color: lightgray;
+    color: darkslategray;
+
+}
