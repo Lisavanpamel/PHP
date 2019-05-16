@@ -46,21 +46,28 @@
 </head>
 <body>
 
-<p><a href="index.php" class="back">Back</a></p>
-<form action="" method="post" enctype="multipart/form-data" id="uploadForm">
-    
-    <h1>Upload Post</h1>
+<header class="uploadHeader">
+    <nav class="uploadNav">
+        <a href="index.php" class="back">Back</a>
+        <h1>Upload Post</h1>
+    </nav>
+</header>
 
-    <?php if (isset($error)): ?>
-        <div><?php echo $error; ?></div>
-    <?php endif; ?>
+<div id="divFormUpload"></div>
+    <form id="uploadForm" action="" method="post" enctype="multipart/form-data" id="uploadForm">
 
+        <?php if (isset($error)): ?>
+            <div><?php echo $error; ?></div>
+        <?php endif; ?>
 
-    <!--<input type="text" name="title" placeholder="Title">-->
-    <input type="file" name="upload_file" onchange="readURL(this);">
-    <input type="text" name="description" placeholder="Description">
-    <input type="submit" value="Upload">
-</form>
+        <!--<input type="text" name="title" placeholder="Title">-->
+        <input id="uploadImage" type="file" name="upload_file" onchange="readURL(this);">
+        </br>
+        <input id="description" type="text" name="description" placeholder="Description">
+        </br>
+        <input id="submitUpload" type="submit" value="UPLOAD">
+    </form>
+</div>
 
 </body>
 </html>

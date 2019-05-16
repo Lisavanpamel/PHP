@@ -24,11 +24,7 @@ $posts = $post->getPosts();
 
         <div class="post" data-id="<?php echo $row['id']?>">
         <!--User id: naam n profiel foto evt weergeven -->
-<<<<<<< HEAD
-            <img class= "img" src="/data/post/<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="60px">    
-=======
             <img class= "img" src="<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="60px">
->>>>>>> origin/master
             <p class="description"><?php echo $row['description'] ?></p>
             <p class="date"><?php echo $row['date'] ?></p>
             

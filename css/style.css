@@ -156,15 +156,57 @@ nav > div.container {
     padding: 10px;
 }
 
-<<<<<<< HEAD
 /* UPLOAD FORM*/
-#uploadForm{
-    display: inline-block;
-    text-align: center;
-
+.uploadNav a{
+  display:inline-block;
 }
-#uploadForm h1{
-    font-size: 2em;
+.uploadNav h1{
+  display:inline-block;
+  font-size: 2em;
+  margin: 0 auto;
+  text-align: center;
+  color: lightgray;
+  text-decoration: none;
+}
+#divFormUpload{
+  margin: 0 auto;
+}
+#uploadForm{
+  margin: 0 auto;
+}
+#description{
+  display:block;
+  text-align: left;
+  margin: 0 auto;
+  height: 100px;
+  width: 20%;
+}
+#submitUpload{
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size:1em;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 3px;
+    width: auto;
+    height: auto;
+    background-color: darkslategray;
+    color: lightgray;
+}
+
+
+#uploadImage{
+    display: block;
+    text-decoration: none;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 2px;
+    width: auto;
+    height: auto;
+    background-color: darkslategray;
+    color: lightgray;
+    text-align: center;
 }
 
 .back{
@@ -179,7 +221,6 @@ nav > div.container {
     color: darkslategray;
 
 }
-=======
 /* Edit profile feature 3 */
 .IMDLogin{
     text-align: center;
@@ -364,4 +405,3 @@ h1 {
 	border: 1px solid #cbcbcb;
 	padding: 5px 10px 0px 10px;
 }
->>>>>>> origin/master
