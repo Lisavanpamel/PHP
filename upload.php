@@ -8,7 +8,7 @@
         $temp = explode(".", $_FILES['upload_file']['name']);
         $newfilename = round(microtime(true)) . '.' . end($temp);
         $image = $newfilename;
-        
+
         try{
             if (!empty($image) && !empty($description)) {
                 $post = new Post();
@@ -24,7 +24,7 @@
                         move_uploaded_file($_FILES['upload_file']['tmp_name'], $destFile);
                         chmod($destFile, 0666);
                         header('location: index.php');
-                    } 
+                    }
                     else {
                         echo "Something went wrong";
                     }
@@ -46,12 +46,10 @@
 </head>
 <body>
 
-<header class="uploadHeader">
-    <nav class="uploadNav">
-        <a href="index.php" class="back">Back</a>
-        <h1>Upload Post</h1>
-    </nav>
-</header>
+<p><a href="index.php">Back</a></p>
+<form action="" method="post">
+
+    <h1>Upload Post</h1>
 
 <div id="divFormUpload"></div>
     <form id="uploadForm" action="" method="post" enctype="multipart/form-data" id="uploadForm">
@@ -60,6 +58,7 @@
             <div><?php echo $error; ?></div>
         <?php endif; ?>
 
+<<<<<<< HEAD
         <!--<input type="text" name="title" placeholder="Title">-->
         <input id="uploadImage" type="file" name="upload_file" onchange="readURL(this);">
         </br>
@@ -69,5 +68,13 @@
     </form>
 </div>
 
+=======
+    <!--<input type="text" name="title" placeholder="Title">-->
+    <input type="file" name="upload_file">
+    <input type="text" name="description" placeholder="Description">
+    <input type="submit" value="Upload">
+</form>
+<?php include_once("includes/footer.inc.php"); ?>
+>>>>>>> origin/master
 </body>
 </html>

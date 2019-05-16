@@ -45,9 +45,13 @@
 <!-- toon de commentaren -->
 <div class="comments">
 <h2>Comments</h2>
-
+<form action="" method="post">
+  <textarea name="comment" form="usrform" placeholder="Write your comment..." style="width: 300px;"></textarea>
+  <br>
+  <input type="submit" value="send comment">
+</form>
 </div>
 
-
+<?php include_once("includes/footer.inc.php"); ?>
 </body>
 </html>

@@ -64,8 +64,10 @@ if(isset($_GET['search'])){
       <!-- toont de zoekresultaten van de users -->
         <div id="user_results">
           <?php foreach($result_users as $user): ?>
+            <a href="user.php?id=<?php echo $user['id']; ?>">
             <div style="background-image: url(<?php echo $user['user_img']; ?>)"></div>
-            <a href="user.php?id=<?php echo $user['id']; ?>"><?php echo $user['user_name']; ?></a>
+            <p><?php echo $user['user_name']; ?></p></a>
+
           <?php endforeach; ?>
         </div>
 
@@ -73,6 +75,6 @@ if(isset($_GET['search'])){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/script.js"></script>
-
+<?php include_once("includes/footer.inc.php"); ?>
 </body>
 </html>
