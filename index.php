@@ -7,6 +7,7 @@ $post = new Post();
 $posts = $post->getPosts();
 
 
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

@@ -24,10 +24,11 @@ else {
 if(!empty($_POST['btn_edit'])){
   $image = $_POST['upload_file'];
   $description = $_POST['description'];
+
   $u = new Post();
   $u->setImage($image);
   $u->setDescription($description);
-  $u->updatePost($id);  // deze functie geeft een update van bewerkte post
+  $u->updatePost();  // deze functie geeft een update van bewerkte post
 }
 
 

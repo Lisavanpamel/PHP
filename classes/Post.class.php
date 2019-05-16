@@ -16,6 +16,7 @@ class Post {
     public function setImage($image)
     {
         $this->image = $image;
+        
         return $this;
     }
 /////////////// DESCRIPTION
@@ -51,6 +52,7 @@ class Post {
         $statement->execute();
         return true;
     }
+
     public function getPosts(){
         $conn = Db::getInstance();
         $statement = $conn->prepare("select * from posts");
