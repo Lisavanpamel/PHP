@@ -1,6 +1,8 @@
-<?php 
-include_once("includes/header.inc.php"); 
+<?php
+include_once("includes/header.inc.php");
 include_once("classes/Post.class.php");
+include_once("classes/Db.class.php");
+include_once("like.php");
 $post = new Post();
 $posts = $post->getPosts();
 
@@ -14,19 +16,33 @@ $posts = $post->getPosts();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>PHP Project</title>
 </head>
 <body>
 
     <?php while($row = $posts->fetch()) : ?>
+
         <div class="post" data-id="<?php echo $row['id']?>">
         <!--User id: naam n profiel foto evt weergeven -->
+<<<<<<< HEAD
             <img class= "img" src="/data/post/<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="60px">    
+=======
+            <img class= "img" src="<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="60px">
+>>>>>>> origin/master
             <p class="description"><?php echo $row['description'] ?></p>
-            </div>
-        </div>
-    <?php endwhile; ?>
+            <p class="date"><?php echo $row['date'] ?></p>
+            
+            <!-- user already likes post -->
+			<span class="unlike fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span> 
+            <span class="like hide fa fa-thumbs-o-up" data-id="<?php echo $row['id']; ?>"></span>
+            <!-- user has not yet liked post -->
+			<span class="like fa fa-thumbs-o-up" data-id="<?php echo $row['id']; ?>"></span> 
+            <span class="unlike hide fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span>  
+            <span class="likes_count"><?php echo $row['likes']; ?> likes</span>
 
+    </div>
+    <?php endwhile; ?>
+    
     <button class="show-posts">Show more</button>
 </section>
 

@@ -4,17 +4,16 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-/* user.class.php linken */
 include_once("classes/User.class.php");
 
 
 $user = new User();
-$user->setUser_id($_SESSION["user_id"]);
-$profile = $user->getUserInfo();
+/*$user->setUser_id($_SESSION["user_id"]);
+$profile = $user->getUserInfo();*/
 
 
 if(!empty($_POST["edit"])) {
-    //IMAGE UPLOAD foto/avatar
+    //IMAGE UPLOAD profielfoto/avatar
     if(!empty($_FILES['profileImg']['name'])) {
         $saveImage = new User();
         $nameWithoutSpace = preg_replace('/\s+/','',$_FILES['profileImg']['name']);
@@ -28,6 +27,7 @@ if(!empty($_POST["edit"])) {
         $destination = $profile['image'];
     }
 
+    // profiel aanpassen van user
     $user_edit = new User();
     $user_edit->setUser_id($_SESSION["user_id"]);
     $user_edit->setFirstname($_POST["firstname"]);
@@ -35,8 +35,8 @@ if(!empty($_POST["edit"])) {
     if($profile['email'] == $_POST["email"]){
         $user_edit->setEmail($_POST["email"]);
     } elseif($user_edit->emailExists($_POST["email"])) {
-        $user_edit->setEmail($profile["email"]); //INDIEN BESTAAND
-        $error = "E-mailadres bestaat al";
+        $user_edit->setEmail($profile["email"]); //Indien het profiel bestaat
+        $error = "Emailadres bestaat al";
     } else {
         $user_edit->setEmail($_POST["email"]);
     }
@@ -48,6 +48,7 @@ if(!empty($_POST["edit"])) {
         $error = "Something went wrong, profile isn't updated.";
     }
 }
+
 
 if(!empty($_POST["passwordedit"]) && !empty($_POST["password"]) && !empty($_POST["repassword"])){
     if(strcmp($_POST['password'], $_POST["repassword"]) == 0){
@@ -64,9 +65,6 @@ if(!empty($_POST["passwordedit"]) && !empty($_POST["password"]) && !empty($_POST
     $error = "Gelieve dit in te vullen aub";
 }
 
-$profile = $user->getUserInfo();
-
-
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,45 +78,37 @@ $profile = $user->getUserInfo();
 
 <!-- Include header -->
 <?php include_once("includes/header.inc.php"); ?>
-<!-- HIER MOET NOG INCLUDE ERROR KOMEN -->
-
-    <form method="post" action="" enctype="multipart/form-data" class="edit_profile">
-        <h2>Edit profile</h2>
-        <label for="profileImg">My profile picture</label>
-        <img src="" alt="profiel foto">
-        <input type="file" name="profileImg" id="profileImg" accept="image/gif, image/jpeg, image/png, image/jpg">
-
-        <div class="formitem">
-            <label for="firstname">firstname</label>
-            <input type="text" name="firstname" id="firstname" value="">
-        </div>
-
-        <div class="formitem">
-            <label for="lastname">lastname</label>
-            <input type="text" name="lastname" id="lastname" value=""> 
-        </div>
-
-        <div class="formitem">
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" value="">
-        </div>
-
-        <input type="submit" name="edit" value="Edit"> 
-    </form>
 
     <form method="post" action="" class="edit_profile">
-        <h2>Change Password</h2>
-        <div class="formitem">
-        <label for="password">New password</label>
-        <input type="password" name="password" id="password" placeholder="New password">
-    </div>
+        <h1>Profiel bewerken</h1>
 
-    <div class="formitem">
-        <label for="repassword">Retype New password</label>
-        <input type="password" name="repassword" id="repassword" placeholder="Retype New password">
-    </div>
+         <!-- indien inloggegevens fout zijn = error -->
+         <?php if(isset($error)): ?>
+            <div class="form__error">
+                <p>Dat wachtwoord was onjuist. Probeer het opnieuw!</p>
+            </div>
+         <?php endif; ?>
 
-        <input type="submit" name="passwordedit" value="Edit">
+        <!-- profielfoto -->
+            <img src="<?php echo $profile['image'] ?>" alt="Profielfoto">
+            <input type="file" name="profileImg" id="profileImg" class="new_avatar" accept="image/gif, image/jpeg, image/png, image/jpg">
+
+        <!-- gegevens gebruiker -->
+            <h2>Change Profile</h2>
+            <input type="text" id="firstname" name="firstname" placeholder="Voornaam">
+            <input type="text" id="lastname" name="lastname" value="" placeholder="Achternaam">
+            <input type="email" id="email" name="email" value="" placeholder="E-mailadres of gebruikersnaam">
+            <!-- button -->
+            <input type="submit" name="edit" class="btn" value="Bewerk profiel">
+
+        <!-- wachtwoord aanpassen -->
+            <h2>Change Password</h2>
+            
+            <input type="password" id="password" name="password" placeholder="Nieuw wachtwoord">
+            <input type="password" name="repassword" id="repassword" placeholder="Bevestig nieuw wachtwoord">
+            
+            <input type="submit" name="passwordedit" class="btn" value="Bewerk wachtwoord">
     </form>
+
 </body>
 </html>

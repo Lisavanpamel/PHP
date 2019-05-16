@@ -5,8 +5,10 @@ class Post {
     private $description;
     private $user_id;
     private $title;
-    
-///////////// IMAGE 
+
+
+
+///////////// IMAGE
     public function getImage()
     {
         return $this->image;
@@ -27,12 +29,12 @@ class Post {
         $this->description = $description;
         return $this;
     }
-////////////// user_id 
+////////////// user_id
     public function getUser_id()
     {
         return $this->user_id;
     }
- 
+
     public function setUser_id($user_id)
     {
         $this->user_id = $user_id;
@@ -57,5 +59,28 @@ class Post {
         $statement->execute();
         return $statement;
     }
+
+
+    public function searchPost($searchkey){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare("select * from posts where description like '$searchkey%'");
+      $statement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetchAll();
+      return $result;
+    }
+
+
+/////// detail page van een post
+    public function showPost($id){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare("select * from posts where id= '$id'");
+      $statement->execute(array($id));
+      $result = $statement->fetch(PDO::FETCH_ASSOC);
+      return $result;
+    }
+
+
+
 }
 ?>

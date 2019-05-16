@@ -55,6 +55,7 @@
         <div><?php echo $error; ?></div>
     <?php endif; ?>
 
+
     <!--<input type="text" name="title" placeholder="Title">-->
     <input type="file" name="upload_file" onchange="readURL(this);">
     <input type="text" name="description" placeholder="Description">

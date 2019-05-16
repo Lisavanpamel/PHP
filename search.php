@@ -4,23 +4,23 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 require_once("classes/Db.class.php");
 include_once("includes/header.inc.php");
+include_once("classes/Post.class.php");
+include_once("classes/User.class.php");
 
 
-if(isset($_POST['search'])){
-  $searchkey = $_POST['search'];
-  $conn = Db::getInstance();
-  $poststatement = $conn->prepare("select * from posts where title like '$searchkey%'");
-  $userstatement = $conn->prepare("select * from users where first_name like '$searchkey%'
-  union select * from users where last_name like '$searchkey%'
-  union select * from users where user_name like '$searchkey%'");
-  $poststatement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
-  $userstatement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
-  $poststatement->execute();
-  $userstatement->execute();
-  $posts = $poststatement->fetchAll();
-  $users = $userstatement->fetchAll();
+if(isset($_GET['search'])){
+  $searchkey = $_GET['search'];
+  //$search = new Post();
+  //$search->search($searchkey);
+  $search_posts = new Post();
+  $result_posts = $search_posts->searchPost($searchkey);
+  //$count_posts = $search_posts->countPosts();
+  $search_users = new User();
+  $result_users = $search_users->searchUser($searchkey);
+
 
 }
+
   ?>
 
 <!DOCTYPE html>
@@ -29,39 +29,50 @@ if(isset($_POST['search'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Search</title>
 </head>
 <body>
 
-  <div class="container">
-      <?php if($poststatement->rowCount() > 0 || $userstatement->rowCount() > 0 ): ?>
-      <p><?php echo $poststatement->rowCount() + $userstatement->rowCount() .  " searchresult(s) found for " . $searchkey; ?></p>
+
+    <div class="search_results">
+      <?php if(count($result_posts) > 0 || count($result_users) > 0 ): ?>
+        <h1> <?php echo count($result_posts) + count($result_users) . " searchresult(s) found for " . "<span style = 'font-weight: bold'> &quot" . $searchkey . "&quot </span>"; ?></h1>
     <?php else: ?>
-      <p>No results found </p>
+      <h1>No results found </h1>
       <?php endif; ?>
-
-
+      <nav>
+        <a href="#" id="href_post">Images</a>
+        <a href="#" id="href_user">Users</a>
+      </nav>
       <!--Toont de zoekresultaten van de posts -->
-      <?php if($poststatement->rowCount() > 0): ?>
-        <?php foreach($posts as $post): ?>
-          <a href=""><?php echo $post['title']; ?>
-            <div style="background-image: url(<?php echo $post['post_img']; ?>)"></div>
-          </a>
+        <div id="post_results">
+        <?php foreach($result_posts as $post): ?>
+          <!-- de "a href" gaat naar de detailagina van een post -->
+          <a href="readpost.php?id=<?php echo $post['id']; ?>">
+          <div class="post" data-id="<?php echo $post['id']?>">
+          <!--User id: naam n profiel foto evt weergeven -->
+              <img class= "img" src="<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="60px">
+              <p class="description"><?php echo $post['description'] ?></p>
+              </div>
+            </a>
         <?php endforeach; ?>
-      <?php endif; ?>
+        </div>
 
 
       <!-- toont de zoekresultaten van de users -->
-        <?php if($userstatement->rowCount() > 0): ?>
-          <?php foreach($users as $user): ?>
+        <div id="user_results">
+          <?php foreach($result_users as $user): ?>
             <div style="background-image: url(<?php echo $user['user_img']; ?>)"></div>
-            <a href=""><?php echo $user['user_name']; ?></a>
+            <a href="user.php?id=<?php echo $user['id']; ?>"><?php echo $user['user_name']; ?></a>
           <?php endforeach; ?>
-        <?php endif; ?>
+        </div>
 
-  </div>
+</div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>

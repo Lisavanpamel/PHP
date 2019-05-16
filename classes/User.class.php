@@ -1,4 +1,3 @@
-
 <?php
 
 class User {
@@ -24,8 +23,15 @@ class User {
   }
 
   public function setFirstname($firstname){
-    $this->firstname = $firstname;
-    return $this;
+    if (empty($firstname)) {
+      throw new Exception("Firstname cannot be empty");
+    }
+    else {
+      $this->firstname = htmlspecialchars($firstname);
+      return $this;
+    }
+    /*$this->firstname = $firstname;
+    return $this;*/
   }
 
   public function getLastname(){
@@ -33,8 +39,15 @@ class User {
   }
 
   public function setLastname($lastname){
-    $this->lastname = $lastname;
-    return $this;
+    if (empty($lastname)) {
+      throw new Exception("Lastname cannot be empty");
+    }
+    else {
+      $this->lastname = htmlspecialchars($lastname);
+      return $this;
+    }
+    /*$this->lastname = $lastname;
+    return $this;*/
   }
 
 
@@ -93,16 +106,15 @@ public function register(){
   // form validation
   // voor register 2
   if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
-    return false;
-    $email_error = "Invalid e-mail";
+    throw new Exception("Invalid Email");
+
   }
   if(strlen($this->password) < 8){
-    return false;
-    $strong_password_error = "Your password need at least 8 characters";
+    throw new Exception("Your password needs at leats 8 characters");
+
   }
   if($this->password != $this->password_confirm){
-    return false;
-    $unequal_password_error = "Passwords don't match";
+    throw new Exception("Passwords don't match");
   }
   else{
   // voor register 2
@@ -175,7 +187,7 @@ public function register(){
       {
         return $this->ImageName;
       }
- 
+
       public function setImageName($ImageName)
       {
         $this->ImageName = $ImageName;
@@ -199,7 +211,7 @@ public function register(){
       {
         return $this->ImageTmpName;
       }
- 
+
       public function setImageTmpName($ImageTmpName)
       {
         $this->ImageTmpName = $ImageTmpName;
@@ -247,14 +259,40 @@ public function register(){
         return false;
         }
         }
+        ////// zoek een user
+        public function searchUser($searchkey){
+          $conn = Db::getInstance();
+          $statement = $conn->prepare("select * from users where first_name like '$searchkey%'
+          union select * from users where last_name like '$searchkey%'
+          union select * from users where user_name like '$searchkey%'");
+          $statement->bindValue(1, '$searchkey%', PDO::PARAM_STR);
+          $statement->execute();
+          $result = $statement->fetchAll();
+          return $result;
+        }
 
 
+        ////// detailpagina van een user
+
+        public function showUser($id){
+          $conn = Db::getInstance();
+          $statement = $conn->prepare("select * from users where users.id like '$id'");
+          //$statement = $conn->prepare("select * from users, posts where posts.user_id = users.id and users.id like '$id'");
+          $statement->execute(array($id));
+          $result = $statement->fetch(PDO::FETCH_ASSOC);
+          return $result;
+        }
+
+        public function showPostsFromUser($id){
+          $conn = Db::getInstance();
+          $statement = $conn->prepare("select * from users, posts where posts.user_id = users.id and users.id like '$id'");
+          $statement->execute(array($id));
+          $result = $statement->fetchAll();
+          return $result;
+        }
 
 
 
     }
 
 ?>
-
-
-

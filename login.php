@@ -1,42 +1,37 @@
-<?php 
+<?php
+	include_once("classes/User.class.php");
 
-include("config.php");
-session_start(); 
+	if ( !empty($_POST) ) {
+		// email en password opvragen
+		$email = $_POST['email'];
+		$password = $_POST['password']; 
+		// hash opvragen op basis van email
+		$conn = new PDO("mysql:host=localhost;dbname=php2019;", "root", "root", null);
+		// check of rehash van password gelijk is aan hash uit databank 
+		$statement = $conn->prepare("SELECT * FROM users WHERE email= :email");
+		$statement->bindParam(":email", $email);
+		$result = $statement->execute();
 
- if($_SERVER["REQUEST_METHOD"] == "POST") {
-	// username and password sent from form 
-	
-	$email = mysqli_real_escape_string($db,$_POST['email']);
-	$password = mysqli_real_escape_string($db,$_POST['password']); 
-	
-	$sql = "SELECT id FROM `users` WHERE 'email' = '$email' and password = '$password'";
-	$result = mysqli_query($db,$sql);
-	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-	$active = $row['active'];
-	
-	$count = mysqli_num_rows($result);
-	
-	// If result matched $email and $password, table row must be 1 row
-	  
-	if($count == 1) {
-	   session_register("user_name");
-	   $_SESSION['user_name'] = $username;
-	   
-	   header("location: index.php");
-	}else {
-	   echo "Your email or password is invalid. Can you please try again?";
+		$user = $statement->fetch(PDO::FETCH_ASSOC);
+		// ja -> login
+		if(password_verify($password, $user['password']) ){
+			session_start(); 
+			$_SESSION['user_name']= $user['id'];
+			header('Location: index.php');
+		} else {
+			echo "Sorry, we can't log you in with that email address and password. Can you try again?";
+		}
 	}
- }
 
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IMDFlix</title>
+  <title>PHP Project</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="netflixLogin">
+	<div class="Login">
 		<div class="form form--login">
 			<form action="" method="post">
 				<h2 form__title>Sign In</h2>
@@ -50,16 +45,16 @@ session_start();
 				<?php endif; ?>
 
 				<div class="form__field">
-					<label for="email">Email</label>
+					<label for="Email">Email</label>
 					<input type="text" name="email">
 				</div>
 				<div class="form__field">
-					<label for="password">Password</label>
+					<label for="Password">Password</label>
 					<input type="password" name="password">
 				</div>
 
 				<div class="form__field">
-					<input type="submit" value="Sign in" id="btn btn--primary">	
+					<input type="submit" value="Sign in" class="btn btn--primary">	
 					<input type="checkbox" id="rememberMe"><label for="rememberMe" class="label__inline">Remember me</label>
 				</div>
 

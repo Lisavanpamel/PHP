@@ -21,14 +21,15 @@
                 <!--<a class="logo" href="index.php"><img src="images/logo.svg" alt="logo"></a>-->
 
                 <div class="right_actions">
+                    <a href="index.php">Home</a>
                     <a href="upload.php">Upload</a>
                     <a href="edit_profile.php">Edit profile</a>
                     <a href="logout.php">Log out</a>
                 </div>
                   <!-- dit is de zoekbalk -->
-                <form class="search" method="post" action="search.php">
+                <form class="search" method="get" action="search.php">
                   <input type="text" name="search" placeholder ="Search a user or post">
-                  <input type="submit"value="Search">
+                  <input class="btn_search"type="submit"value="Search">
                 </form>
             </div>
         </nav>
