@@ -63,7 +63,7 @@
         <!--<input type="text" name="title" placeholder="Title">-->
         <input id="uploadImage" type="file" name="upload_file" onchange="readURL(this);">
         </br>
-        <input id="description" type="text" name="description" placeholder="Description">
+        <textarea id="description" type="text" name="description" placeholder="Description"></textarea>
         </br>
         <input id="submitUpload" type="submit" value="UPLOAD">
     </form>

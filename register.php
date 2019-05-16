@@ -66,9 +66,6 @@ if(!empty($_POST)){
 </head>
 
 <body>
-<?php include_once("includes/header.inc.php"); ?>
-
-
   <form class="form_signup" method="post" action="">
     <h1>Sign in</h1>
     <!-- foutboodschap wanneer niet alle velden zijn ingevuld -->
