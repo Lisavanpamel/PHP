@@ -1,8 +1,6 @@
 
 html{
     font-family: 'Noto Sans KR', sans-serif;
-    position:relative;
-    min-height: 100%;
 }
 
 body {
@@ -20,6 +18,7 @@ h2 {
 }
 
 h1 {
+  margin-top: 35px;
     margin-bottom: 15px;
     padding-bottom: 10px;
     font-family: sans-serif;
@@ -32,7 +31,7 @@ h1 {
 
 /* navigatie */
 nav {
-    background-color: rgb(16, 64, 131);
+    background-color: #5D66FF;
     color: white;
     padding: 20px;
     font-weight: bold;
@@ -277,15 +276,25 @@ footer p, footer a
     color: darkslategray;
 
 }
-/* Edit profile feature 3 */
-.IMDLogin{
-    text-align: center;
+
+.show-posts{
+  font-family: sans-serif;
+  margin-top: 15px;
+  background-color: #62CC35; /*#1db954, #62CC35, #53B32B*/
+  text-transform: uppercase;
+  width: 250px;
+  height: 45px;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 30px;
 }
 
+/* Edit profile feature 3 */
 .btn {
     font-family: sans-serif;
     margin-top: 15px;
-    background-color: #1db954;
+    background-color: #62CC35;
     text-transform: uppercase;
     width: 250px;
     height: 45px;
@@ -295,11 +304,18 @@ footer p, footer a
     border-radius: 30px;
 }
 
+.btn:hover, .show-posts:hover  {
+  background-color: #fff; /*#1db954, #62CC35, #53B32B*/
+  border-style: solid;
+  border-color: #62CC35;
+  color: #62CC35;
+}
+
 .edit_profile {
     width: 380px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 .edit_profile input {
@@ -318,8 +334,6 @@ footer p, footer a
 
     margin-bottom: 30px;
 }
-
-
 /* einde edit profile feature 3 */
 
 .post {

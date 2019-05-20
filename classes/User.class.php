@@ -157,17 +157,20 @@ public function register(){
 }
 
 
-///////// PROFIEL AANPASSEN FEATURE 3
-      public function getUser_id()
-      {
-        return $this->user_id;
-      }
+//////////////////////////////////////////////////
+///////////////// PROFIEL AANPASSEN ///////////// feature 3
+////////////////////////////////////////////////
 
-      public function setUser_id($user_id)
-      {
-        $this->user_id = htmlspecialchars($user_id);
-        return $this;
-      }
+      public function getUser_id()
+        {
+          return $this->user_id;
+        }
+
+        public function setUser_id($user_id)
+        {
+          $this->user_id = htmlspecialchars($user_id);
+          return $this;
+        }
 
 
       public function getUserInfo() {
