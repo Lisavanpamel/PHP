@@ -20,13 +20,19 @@ $posts = $post->getPosts();
 </head>
 <body>
 
+<div id="success_message">test</div>
+
     <?php while($row = $posts->fetch()) : ?>
 
         <div class="post" data-id="<?php echo $row['id']?>">
         <!--User id: naam n profiel foto evt weergeven -->
+            <a href="readpost.php?id=<?php echo $row['id']; ?>">
             <img class="imgPost" src="data/post/<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="400px">
+            </a>
             <p class="description"><?php echo $row['description'] ?></p>
             <p class="date"><?php echo $row['date'] ?></p>
+            <a href="update_post.php?id=<?php echo $row['id']; ?>">Edit</a>
+            <a href="delete_post.php?id=<?php echo $row['id']; ?>">Delete</a>
 
             <!-- user already likes post -->
 			<span class="unlike fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span>

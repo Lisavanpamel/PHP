@@ -22,7 +22,7 @@
                 <a href="index.php">Home</a>
                 <form class="search" method="get" action="search.php">
                   <input type="text" name="search" placeholder ="Search a user or post">
-                  <input class="btn_search"type="submit"value="Search">
+                  <input class="btn_search"type="submit" value="">
                 </form>
                 <div class="right_actions">
                     <a href="upload.php">Upload</a>

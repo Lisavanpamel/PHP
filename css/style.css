@@ -84,7 +84,7 @@ footer p, footer a
 }
 .form_signup
 {
-  margin-top: 10%;
+  margin-top: 50px;
   margin-left: 10%;
   margin-bottom: 10%;
 }
@@ -105,6 +105,7 @@ footer p, footer a
 
 .submit_signup
 {
+  cursor: pointer;
   font-family: sans-serif;
   margin-top: 15px;
   background-color: #1db954;
@@ -343,21 +344,24 @@ footer p, footer a
 .search input
 {
   display: inline;
+  height: 35px;
 }
 .search input:first-child
 {
   width: 300px;
-  height: 35px;
+  /*height: 35px;*/
 }
 
 .btn_search
 {
-  font-family: sans-serif;
-  margin-top: 15px;
+  cursor: pointer;
   background-color: #1db954;
+  background-image: url('../img/search.png');
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: center;
   text-transform: uppercase;
-  width: 100px;
-  height: 35px;
+  width: 50px;
   color: #fff;
   border: none;
   font-weight: bold;
@@ -503,13 +507,28 @@ footer p, footer a
 
 .detail_post
 {
-  width: 80%;
-	margin: 10px auto;
-	border: 1px solid #cbcbcb;
-	padding: 5px 10px 0px 10px;
+  max-width: 80%;
+  height: auto;
+  background-color:lightgray;
+  padding: 1em;
+  /*margin: 1em;*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.detail_post img
+{
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (min-width: 800px){
+
 
 
 

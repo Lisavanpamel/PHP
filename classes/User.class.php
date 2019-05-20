@@ -104,7 +104,6 @@ public function setPassword_confirm($password_confirm){
 
 public function register(){
   // form validation
-  // voor register 2
   if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
     throw new Exception("Invalid Email");
 
@@ -144,6 +143,7 @@ public function register(){
 
     $result = $statement->execute();
     //return $result;
+    $_SESSION['username'] = $username;
     header("Location: index.php");
   }
   catch( Throwable $t){

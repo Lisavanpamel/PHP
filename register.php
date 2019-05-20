@@ -2,18 +2,14 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
 require_once("classes/User.class.php");
 require_once("classes/Db.class.php");
-// sessie opstarten
-session_start();
-
-
 
 // valideren of alle velden zijn ingevuld
 if(!empty($_POST)){
   //return true;
-
+  // sessie opstarten
+  session_start();
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
   $username = $_POST['username'];
@@ -67,61 +63,47 @@ if(!empty($_POST)){
 
 <body>
   <form class="form_signup" method="post" action="">
-    <h1>Sign up</h1>
+    <h1>Create your account</h1>
     <!-- foutboodschap wanneer niet alle velden zijn ingevuld -->
     <?php if(isset($error)): ?>
     <div class="error_signup"><?php echo $error; ?></div>
     <?php endif; ?>
     <!-- firstname -->
     <div class="input_signup">
-      <label>Firstname</label>
-      <br>
       <input type="text"name="firstname"value="" placeholder="First name">
     </div>
 
     <!-- lastname -->
     <div class="input_signup">
-      <label>Lastname</label>
-      <br>
       <input type="text"name="lastname"value="" placeholder="Last name">
     </div>
 
     <!-- username -->
     <div class="input_signup">
-    <label>Username</label>
     <br>
     <input type="text"name="username"value="" placeholder="User name">
   </div>
 
   <!-- e-mail -->
   <div class="input_signup">
-    <label>E-mail</label>
-    <br>
-    <input type="text"name="email" placeholder="example@gmail.com">
+    <input type="text"name="email" placeholder="email">
   </div>
 
 
   <!-- birthdate -->
   <div class="input_signup">
-    <label>Birthdate</label>
-    <br>
     <input type="date"name="birthdate">
   </div>
 
 
     <!-- password -->
     <div class="input_signup">
-      <label>Password</label>
-      <br>
       <input type="password"name="password" value="" placeholder="Password">
-      <br>
       <p>Your password need at least 8 characters</p>
     </div>
 
     <!-- confirm password -->
     <div class="input_signup">
-      <label>Confirm Password</label>
-      <br>
       <input type="password"name="password_confirm"value="" placeholder="Retype Password">
     </div>
 

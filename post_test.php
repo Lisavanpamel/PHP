@@ -17,17 +17,36 @@ $posts = $post->getPosts();
     <link rel="stylesheet" href="css/style.css">
     <title>PHP Project</title>
 </head>
+<style>
+
+
+#success_message
+{
+  color: #fff;
+  background-color: rgba(29,185,84,0.5);
+  width: 100%;
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
+
 <body>
+
+<div id="success_message">test</div>
 
     <?php while($row = $posts->fetch()) : ?>
 
-        <div class="post" data-id="<?php echo $row['id']?>">
         <!--User id: naam n profiel foto evt weergeven -->
-            <img class= "img" src="<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="60px">
-            <p class="description"><?php echo $row['description'] ?></p>
-            <p class="date"><?php echo $row['date'] ?></p>
+        <div class="post" data-id="<?php echo $row['id']?>">
+        <a href="readpost.php?id=<?php echo $row['id']; ?>">
+        <img class="imgPost" src="data/post/<?php echo $row['post_img'] ?>" alt="post_img" height="auto" width="400px">
+      </a>
+      <p class="description"><?php echo $row['description'] ?></p>
             <a href="update_post.php?id=<?php echo $row['id']; ?>">Edit</a>
-            <a href="#">Delete</a>
+            <a href="delete_post.php?id=<?php echo $row['id']; ?>">Delete</a>
 
             <!-- user already likes post -->
 			<span class="unlike fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span>

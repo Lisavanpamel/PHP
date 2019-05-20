@@ -59,7 +59,7 @@
         <?php if (isset($error)): ?>
             <div><?php echo $error; ?></div>
         <?php endif; ?>
-        
+
         <!--<input type="text" name="title" placeholder="Title">-->
         <input id="uploadImage" type="file" name="upload_file" onchange="readURL(this);">
         </br>
@@ -67,7 +67,7 @@
         </br>
         <input id="submitUpload" type="submit" value="UPLOAD">
     </form>
-</div>>
+</div>
 
 </body>
 </html>

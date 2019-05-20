@@ -16,7 +16,7 @@ class Post {
     public function setImage($image)
     {
         $this->image = $image;
-        
+
         return $this;
     }
 /////////////// DESCRIPTION
@@ -88,6 +88,52 @@ class Post {
     $statement->execute(array($id));
     $result = $statement->fetch(PDO::FETCH_ASSOC);
     return $result;
+  }
+
+  //// update jouw post
+
+  public function updatePost($id){
+    $conn = Db::getInstance();
+    $statement = $conn->prepare("update posts set description=:descr, post_img=:img where id=:id");
+    $statement->bindValue(":img", $this->getImage());
+    $statement->bindValue(":descr", $this->getDescription());
+    $statement->bindValue(":id",$id);
+    if($statement->execute()){
+      ?>
+        <script type="text/javascript">
+        alert("Post succesfully updated!");
+        window.location.href="index.php";
+        </script>
+        <?php
+      }
+        else{
+          echo "something went wrong";
+        }
+        ?>
+        <script type="text/javascript">
+        alert("Something went wrong...");
+        </script>
+        <?php
+        return true;
+
+  }
+
+  //// delete jouw post
+  public function deleteYourPost($id){
+    $conn = Db::getInstance();
+    $statement = $conn->prepare("delete from posts where id= :id");
+    $statement->bindValue(":id", $id);
+    $statement->execute();
+    //header("Location: post_test.php");
+    ?>
+    <script type="text/javascript">
+    // toon in de index een boodschap dat de post succesvol verwijderd is
+    window.location.href="post_test.php";
+    alert("delete succeful");
+    </script>
+
+    <?php
+
   }
 
 

@@ -6,6 +6,7 @@ require_once("classes/Db.class.php");
 include_once("includes/header.inc.php");
 include_once("classes/Post.class.php");
 include_once("classes/User.class.php");
+include_once("like.php");
 
 
 if(isset($_GET['search'])){
@@ -17,8 +18,6 @@ if(isset($_GET['search'])){
   //$count_posts = $search_posts->countPosts();
   $search_users = new User();
   $result_users = $search_users->searchUser($searchkey);
-
-
 }
 
   ?>
@@ -50,13 +49,21 @@ if(isset($_GET['search'])){
         <div id="post_results">
         <?php foreach($result_posts as $post): ?>
           <!-- de "a href" gaat naar de detailagina van een post -->
-          <a href="readpost.php?id=<?php echo $post['id']; ?>">
-          <div class="post" data-id="<?php echo $post['id']?>">
-          <!--User id: naam n profiel foto evt weergeven -->
-              <img class= "img" src="<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="60px">
-              <p class="description"><?php echo $post['description'] ?></p>
-              </div>
+            <div class="post" data-id="<?php echo $row['id']?>">
+            <a href="readpost.php?id=<?php echo $post['id']; ?>">
+            <img class="imgPost" src="data/post/<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="400px">
             </a>
+            <p class="description"><?php echo $post['description'] ?></p>
+
+            <!-- user already likes post -->
+			<span class="unlike fa fa-thumbs-up" data-id="<?php //echo $row['id']; ?>"></span>
+            <span class="like hide fa fa-thumbs-o-up" data-id="<?php //echo $row['id']; ?>"></span>
+            <!-- user has not yet liked post -->
+			<span class="like fa fa-thumbs-o-up" data-id="<?php //echo $row['id']; ?>"></span>
+            <span class="unlike hide fa fa-thumbs-up" data-id="<?php //echo $row['id']; ?>"></span>
+            <span class="likes_count"><?php //echo $row['likes']; ?> likes</span>
+          </div>
+
         <?php endforeach; ?>
         </div>
 
