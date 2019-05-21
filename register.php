@@ -80,7 +80,6 @@ if(!empty($_POST)){
 
     <!-- username -->
     <div class="input_signup">
-    <br>
     <input type="text"name="username"value="" placeholder="User name">
   </div>
 

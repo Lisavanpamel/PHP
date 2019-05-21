@@ -40,10 +40,12 @@ else {
 <?php include_once("includes/header.inc.php"); ?>
 <!-- header waarin de profielfoto van de user zit -->
 <div class="user_header">
-
+<div class="profile">
 <div class="profile_pic" style="background-image: url(<?php $users['user_img']; ?>);"></div>
 <br>
 <p><?php echo $users['user_name']; ?></p>
+</div>
+
 <button class="follow_button">Follow</button>
 </div>
 
@@ -55,15 +57,12 @@ else {
 
 <div class="about_user">
 
-
 <h1>About</h1>
 <p> <?php echo $users['bio']; ?></p>
+<br>
+<p><span style="font-weight: bold">Full name:</span> <?php echo $users['first_name'] . " " . $users['last_name']; ?></p>
 
-<h2>Full name</h2>
-  <p><?php echo $users['first_name'] . " " . $users['last_name']; ?></p>
-
-<h2>Birthdate</h2>
-<p><?php echo $users['birthdate']; ?></p>
+<p><span style="font-weight: bold">Birthdate:</span> <?php echo $users['birthdate']; ?></p>
 </div>
 
 <!-- alle posts van de user -->
@@ -75,7 +74,7 @@ else {
 <?php foreach($posts as $post): ?>
   <div class="post" data-id="<?php echo $post['posts.id']?>">
   <!--User id: naam n profiel foto evt weergeven -->
-      <img class= "img" src="<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="60px">
+      <img class= "img" src="data/post/<?php echo $post['post_img']?>" alt="post_img" height="auto" width="60px">
       <p class="description"><?php echo $post['description'] ?></p>
 </div>
 <?php endforeach; ?>

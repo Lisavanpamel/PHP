@@ -20,19 +20,21 @@
             <div class="container">
                 <!--<a class="logo" href="index.php"><img src="images/logo.svg" alt="logo"></a>-->
                 <a href="index.php">Home</a>
-                <form class="search" method="get" action="search.php">
-                  <input type="text" name="search" placeholder ="Search a user or post">
-                  <input class="btn_search"type="submit" value="">
-                </form>
                 <div class="right_actions">
                     <a href="upload.php">Upload</a>
                     <a href="edit_profile.php">Edit profile</a>
                     <a href="logout.php">Log out</a>
+                    <!-- dit is de zoekbalk -->
                 </div>
-                  <!-- dit is de zoekbalk -->
 
             </div>
+            <form class="search" method="get" action="search.php">
+              <input id="input_search" type="text" name="search" placeholder ="Search a user or post">
+              <input id="btn_search"type="submit" value="">
+            </form>
         </nav>
+
     </header>
+
 </body>
 </html>

@@ -29,7 +29,7 @@ h1 {
     border-bottom: 1px solid #d9dadc;
 }
 
-/* navigatie */
+/*-------------------Navigatie-------------------- */
 nav {
     background-color: #5D66FF;
     color: white;
@@ -57,11 +57,11 @@ nav > div.container {
 }
 /* einde navigatie */
 
-/* footer */
+/*------------------- Footer----------------------- */
 
 footer
 {
-  position: absolute;
+  position: relative;
   bottom: 0;
   height: 100px;
   width: 100%;
@@ -74,7 +74,7 @@ footer p, footer a
   display: inline;
 }
 
-/* registreren */
+/* ----------------Registreren---------------------- */
 
 .input_signup p
 {
@@ -83,14 +83,15 @@ footer p, footer a
 }
 .form_signup
 {
-  margin-top: 50px;
-  margin-left: 10%;
-  margin-bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
 }
 
 .input_signup
 {
-  margin-top: 2em;
+  margin-top: 1em;
   font-size: 20px;
 }
 
@@ -106,15 +107,15 @@ footer p, footer a
 {
   cursor: pointer;
   font-family: sans-serif;
-  margin-top: 15px;
-  background-color: #1db954;
-  text-transform: uppercase;
-  width: 250px;
-  height: 45px;
-  color: #fff;
-  border: none;
-  font-weight: bold;
-  border-radius: 30px;
+   margin-top: 15px;
+   background-color: #62CC35;
+   text-transform: uppercase;
+   width: 250px;
+   height: 45px;
+   color: #fff;
+   border: none;
+   font-weight: bold;
+   border-radius: 30px;
 }
 
 .error_signup
@@ -132,7 +133,7 @@ footer p, footer a
 }
 
 
-/* form */
+/* --------------------form------------------------ */
 .formitem {
     display: flex;
     flex-direction: column;
@@ -170,9 +171,9 @@ footer p, footer a
     background-color: aliceblue;
     margin-bottom: 30px;
 }
-/* einde form */
+/*-------------------- einde form------------------------ */
 
-/* Begin Posts*/
+/* ------------------Begin Posts-------------------------*/
 .post{
     display: inline-block;
     text-align: center;
@@ -198,7 +199,7 @@ footer p, footer a
 }
 
 
-/* Einde Posts*/
+/* -------------------Einde Posts---------------------*/
 
 .show-posts{
     margin: auto;
@@ -212,7 +213,7 @@ footer p, footer a
     padding: 10px;
 }
 
-/* UPLOAD FORM*/
+/*------------------------ UPLOAD FORM-------------------------*/
 .uploadNav a{
   display:inline-block;
 }
@@ -251,7 +252,6 @@ footer p, footer a
     color: lightgray;
 }
 
-
 #uploadImage{
     display: block;
     text-decoration: none;
@@ -275,9 +275,7 @@ footer p, footer a
     height: 18px;
     background-color: lightgray;
     color: darkslategray;
-
 }
-
 .show-posts{
   font-family: sans-serif;
   margin-top: 15px;
@@ -291,7 +289,7 @@ footer p, footer a
   border-radius: 30px;
 }
 
-/* Edit profile feature 3 */
+/* -----------------Edit profile feature 3------------------ */
 .btn {
     font-family: sans-serif;
     margin-top: 15px;
@@ -305,7 +303,7 @@ footer p, footer a
     border-radius: 30px;
 }
 
-.btn:hover, .show-posts:hover  {
+.btn:hover, .show-posts:hover, .submit_signup:hover, .follow_button:hover  {
   background-color: #fff; /*#1db954, #62CC35, #53B32B*/
   border-style: solid;
   border-color: #62CC35;
@@ -335,7 +333,7 @@ footer p, footer a
 
     margin-bottom: 30px;
 }
-/* einde edit profile feature 3 */
+/* --------------einde edit profile feature 3---------------- */
 
 .post {
 	width: 30%;
@@ -354,39 +352,41 @@ footer p, footer a
 	font-size: 1.3em;
 }
 
-/* search results */
-.search input
+/* ----------------Search results----------------- */
+.search
 {
-  display: inline;
-  height: 35px;
-}
-.search input:first-child
-{
-  width: 300px;
-  /*height: 35px;*/
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
 }
 
-.btn_search
+#input_search
+{
+  width: 450px;
+  height: 35px;
+}
+
+#btn_search
 {
   cursor: pointer;
-  background-color: #1db954;
+  background-color: #62CC35;
   background-image: url('../img/search.png');
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: center;
-  text-transform: uppercase;
   width: 50px;
+  height: 40px;
   color: #fff;
   border: none;
-  font-weight: bold;
 }
 
 .search_results{
-  position: absolute;
-  top: 20%;
-  left: 5%;
-  width: 100%;
-
+  margin-top: 100px;
+  margin-bottom: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 
 .search_results h1
@@ -406,7 +406,6 @@ footer p, footer a
   text-decoration: none;
   margin-right: 50px;
   color: #1db954;
-
 }
 
 .results_by_type
@@ -438,44 +437,12 @@ footer p, footer a
 
 #user_results a
 {
-  /*background-position: center center;*/
   max-width: 300px;
 }
 
+/*-------------Einde Search results ----------------------*/
 
-/* detailpagina van andere gebruiker */
-
-.follow_button
-{
-  font-family: sans-serif;
-  margin-top: 15px;
-  background-color: #1db954;
-  text-transform: uppercase;
-  width: 100px;
-  height: 35px;
-  color: #fff;
-  border: none;
-  font-weight: bold;
-  margin-left: 35%;
-  margin-top: 40px;
-}
-
-
-.follow
-{
-  display: inline;
-  position: relative;
-  top: 50px;
-  left: 20%;
-}
-
-.follow a
-{
-  /*border: 1px solid #000;*/
-  padding: 20px;
-}
-
-
+/*------------------ detailpagina van andere gebruiker--------- */
 .user_header p
 {
   font-size: 25px;
@@ -488,6 +455,11 @@ footer p, footer a
   background-color: aliceblue;
 }
 
+.profile
+{
+  margin-left: 40%;
+}
+
 .profile_pic
 {
   width: 100px;
@@ -496,13 +468,35 @@ footer p, footer a
   border-radius: 200px;
 }
 
-.profile_pic, .user_header p
+.follow_button
 {
-  position:relative;
-  top: 10%;
-  left: 35%;
+  cursor: pointer;
+  font-family: sans-serif;
+   margin-top: 15px;
+   background-color: #62CC35;
+   text-transform: uppercase;
+   width: 250px;
+   height: 45px;
+   color: #fff;
+   border: none;
+   font-weight: bold;
+   border-radius: 30px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
 }
 
+.follow
+{
+  display: inline;
+  position: relative;
+  top: 50px;
+  left: 20%;
+}
+.follow a
+{
+  padding: 20px;
+}
 .content_about_user
 {
   margin-top: 80px;
@@ -510,14 +504,13 @@ footer p, footer a
   margin-bottom: 20%;
   width: 80%;
 }
-
 .posts_from_user
 {
   margin-top: 100px;
   margin-bottom: 100px;
 }
 
-/* detail pagina van een post */
+/* -----------------detail pagina van een post-------------- */
 
 .detail_post
 {

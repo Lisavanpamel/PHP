@@ -54,7 +54,7 @@ else {
     border-style: none;
     padding: 10px;
     width: 150px;
-
+    cursor:pointer;
   }
 
   #cancel
@@ -63,6 +63,7 @@ else {
     border-style: none;
     padding: 10px;
     width: 150px;
+    cursor:pointer;
   }
 
   #delete_form
@@ -90,8 +91,8 @@ else {
   </header>
 
 <form action=""method="post" id="delete_form">
-  <div class="post" data-id="<?php echo $post['id']?>">
-  <img class="imgPost" src="data/post/<?php echo $post['post_img'] ?>" alt="post_img" height="auto" width="400px">
+  <div class="detail_post" data-id="<?php echo $post['id']?>">
+  <img class="imgPost" src="data/post/<?php echo $post['post_img'] ?>">
   <p class="description"><?php echo $post['description'] ?></p>
 </div>
 <br>

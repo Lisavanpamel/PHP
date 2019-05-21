@@ -11,11 +11,8 @@ include_once("like.php");
 
 if(isset($_GET['search'])){
   $searchkey = $_GET['search'];
-  //$search = new Post();
-  //$search->search($searchkey);
   $search_posts = new Post();
   $result_posts = $search_posts->searchPost($searchkey);
-  //$count_posts = $search_posts->countPosts();
   $search_users = new User();
   $result_users = $search_users->searchUser($searchkey);
 }
@@ -42,8 +39,8 @@ if(isset($_GET['search'])){
       <h1>No results found </h1>
       <?php endif; ?>
       <nav>
-        <a href="#" id="href_post">Images</a>
-        <a href="#" id="href_user">Users</a>
+        <a href="#" id="href_post">Images (<?php echo count($result_posts) ?>)</a>
+        <a href="#" id="href_user">Users (<?php echo count($result_users) ?>)</a>
       </nav>
       <!--Toont de zoekresultaten van de posts -->
         <div id="post_results">
